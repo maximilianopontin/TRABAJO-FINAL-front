@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import PagInicio  from './Componentes/Pagina de Inicio/PagInicio';
-import { PagRegistro } from './Componentes/Registro/Registro';
-import { Logo } from './logo/logo';
-import './Componentes/Registro/Registro.css'
+import { PagInicioSesion } from './Componentes/Iniciar sesion/InicioSesion';
+import './Componentes/Iniciar sesion/InicioSesion.css'
 
 
 function App() {
@@ -12,12 +10,9 @@ function App() {
 
   return (
     <>   
-
     <div> 
-     <PagInicio/>
-     <PagRegistro/>
-     
-     </div>
+     <PagInicioSesion/>
+   </div>
     </>
   )
 }
