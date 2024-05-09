@@ -3,8 +3,10 @@ import React from "react";
 import logo from '../../logo/logo.png';
 import './PagInicio.css';
 import ReproductorMusica from './ReproductorMusica';
+import Footer from "../Footer/Footer";
 
 function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
+
     return (
         <div>
             <img src={logo} alt="logo" className="logo" />
@@ -17,6 +19,11 @@ function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
             <div>
                 <ReproductorMusica />
             </div>
+
+            
+         
+                <Footer />
+        
         </div>
       
     );

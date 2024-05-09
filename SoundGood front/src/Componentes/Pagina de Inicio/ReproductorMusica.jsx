@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 
 function ReproductorMusica() {
     const listaCanciones = [
-        { url: '', nombre: 'Canción 1' },
+        { url: 'Canción 1' },
         { url: 'ruta/de/cancion2.mp3', nombre: 'Canción 2' },
         { url: 'ruta/de/cancion3.mp3', nombre: 'Canción 3' }
     ];
