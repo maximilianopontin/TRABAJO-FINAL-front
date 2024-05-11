@@ -9,10 +9,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>   
-    <div> 
-     <PagInicioSesion/>
-   </div>
+    <>
+      <div>
+        <PagInicioSesion />
+      </div>
     </>
   )
 }

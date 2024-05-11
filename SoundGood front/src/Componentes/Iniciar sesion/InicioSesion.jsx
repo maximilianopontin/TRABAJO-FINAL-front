@@ -3,21 +3,21 @@ import React, { useState } from "react"
 import logo from '../../logo/logo.png'
 
 
-export function PagInicioSesion(){
-   
-        const [email, setEmail] = useState('');
-        const [password, setPassword] = useState('');
-        const [errorMessage, setErrorMessage] = useState('');
+export function PagInicioSesion() {
 
-     //validamos que la contraseña cumpla con las condiciones dadas.
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    //validamos que la contraseña cumpla con las condiciones dadas.
     const handlerFormSudmit = (e) => {
         e.preventDefault();
- 
-        if (!validatePassword(password)){
+
+        if (!validatePassword(password)) {
             setErrorMessage('La contraseña debe tener al menos una mayuscula, un numero y simbolo.');
             return;
         }
-        if (!validateEmail(email)){
+        if (!validateEmail(email)) {
             setErrorMessage('El email debe ser valido');
             return;
         }
@@ -28,10 +28,10 @@ export function PagInicioSesion(){
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value
         setPassword(newPassword);
-        if(validatePassword(newPassword)){
+        if (validatePassword(newPassword)) {
             setErrorMessage('');
-        }else {
-            setErrorMessage('La contraseña esta mal');
+        } else {
+            setErrorMessage('La contraseña es incorrecta');
         }
     }
 
@@ -47,36 +47,38 @@ export function PagInicioSesion(){
         const conditionPassaword = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
         return conditionPassaword.test(password);
     }
-    
+
     //Validacion para el email
     const validateEmail = email => {
         const conditionEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return conditionEmail.test(email);
     }
-    
+
     //Liampiar el form
     const clearFrom = () => {
-        setEmail(''); 
+        setEmail('');
         setPassword('');
         setErrorMessage('');
 
     }
-    return(  
+    return (
         <div >
             <img src={logo} alt="" className="logoo" />
 
-           <form className="form" onSubmit={handlerFormSudmit}>
+            <form className="form" onSubmit={handlerFormSudmit}>
 
-             <input type="text" name="email"  placeholder="Email" value={email} onChange={hadleEmailChange} required />
+                <input type="text" name="email" placeholder="Email" value={email} onChange={hadleEmailChange} required />
 
-             <input type="password" name="password"  placeholder="Contraseña" value={password} onChange={handlePasswordChange}
-             required/>
+                <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange}
+                    required />
+               
+               <div className="error-message">
+                    {errorMessage ? errorMessage : ""}
+                </div>
 
-             {errorMessage && <div className="error-message">{errorMessage}</div>} 
-        
-             <button type="submit">Iniciar sesion</button>
+                <button type="submit">Iniciar sesion</button>
 
-          </form> 
+            </form>
 
         </div>
     )

@@ -1,11 +1,13 @@
+
 .form {
+    display: flex; /* Usar flexbox para el diseño */
+    flex-direction: column; /* Alinear elementos verticalmente */
     width: 100%; /* Ancho del formulario */
     margin: 0 auto; /* Centrar el formulario horizontalmente */
     padding: 20px;
     border: 1px solid #ccc; /* Borde del formulario */
     border-radius: 5px; /* Bordes redondeados */
-    display: flex; /* Usar flexbox para el diseño */
-    flex-direction: column; /* Alinear elementos verticalmente */
+  
   }
   
   .form input {
@@ -23,15 +25,15 @@
     color: white; /* Color del texto del botón */
     border: none; /* Sin borde */
     border-radius: 3px; /* Bordes redondeados */
-    cursor: pointer; /* Cursor al pasar sobre el botón */
   }
   
   .error-message {
       color: red;
+      width:100%;
+      height: 30px;
   }
   
   .logoo {
     width: 60%; /* Establece el ancho de la imagen al 100% del contenedor */
-    height: auto; /* Mantiene la relación de aspecto original de la imagen */
   }
   
