@@ -63,7 +63,7 @@ export function PagInicioSesion() {
     }
     return (
         <div >
-            <img src={logo} alt="" className="logoo" />
+            <img src={logo} alt="" className="Logo" />
 
             <form className="form" onSubmit={handlerFormSudmit}>
 
@@ -71,13 +71,13 @@ export function PagInicioSesion() {
 
                 <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange}
                     required />
-               
-               <div className="error-message">
-                    {errorMessage ? errorMessage : ""}
-                </div>
 
                 <button type="submit">Iniciar sesion</button>
 
+                <div className="error-message">
+                    {errorMessage ? errorMessage : ""}
+                </div>
+                
             </form>
 
         </div>
