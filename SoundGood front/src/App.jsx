@@ -13,7 +13,7 @@ function App() {
     <>
       <div>
        <Nav/>
-        <PagInicioSesion />
+      <PagInicioSesion />
       </div>
     </>
   )
