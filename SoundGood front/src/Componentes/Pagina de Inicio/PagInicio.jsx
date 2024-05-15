@@ -2,8 +2,7 @@
 import React from "react";
 import logo from '../../logo/logo.png';
 import './PagInicio.css';
-import ReproductorMusica from './ReproductorMusica';
-import Footer from "../Footer/Footer";
+import Reproductor from '../Reproductor musica/Reproductor';
 
 function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
 
@@ -14,15 +13,11 @@ function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
                 <button onClick={redirectToInicioSesion} className="green-button">Iniciar sesión</button>
                 <button onClick={redirectToRegistro} className="green-button">Registrate</button>
             </div>
-         
-        
-            <div>
-                <ReproductorMusica />
-            </div>
 
-            
          
-                <Footer />
+            <div>
+                <Reproductor />
+            </div>
         
         </div>
       
