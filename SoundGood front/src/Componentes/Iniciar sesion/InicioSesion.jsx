@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import logo from '../../logo/logo.png'
 
 
+
 export function PagInicioSesion() {
 
     const [email, setEmail] = useState('');
@@ -62,7 +63,7 @@ export function PagInicioSesion() {
 
     }
     return (
-        <div >
+        <div >          
             <img src={logo} alt="" className="Logo" />
 
             <form className="form" onSubmit={handlerFormSudmit}>
