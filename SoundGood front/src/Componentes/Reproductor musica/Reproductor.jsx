@@ -2,25 +2,9 @@
 
 import React from 'react';
 import CancionesTop50 from "@madzadev/audio-player";
-//import tracks from '../ListasDeCanciones/Top50/Tracks';
+import './Reproductor.css';
+import tracksTop50 from '../ListasDeCanciones/Top50';
 
-const tracks = [
-  {
-    url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
-    title: "Madza - Chords of Life",
-    tags: ["house"],
-  },
-  {
-    url: "https://audioplayer.madza.dev/Madza-Late_Night_Drive.mp3",
-    title: "Madza - Late Night Drive",
-    tags: ["dnb"],
-  },
-  {
-    url: "https://audioplayer.madza.dev/Madza-Persistence.mp3",
-    title: "Madza - Persistence",
-    tags: ["dubstep"],
-  },
-];
 
 const colors = {
   tagsBackground: "#5fa25b",
@@ -30,7 +14,7 @@ const colors = {
   searchBackground: "#18191f",
   searchText: "#ffffff",
   searchPlaceHolder: "#575a77",
-  playerBackground: "#18191f",
+  playerBackground: "#292b30",
   titleColor: "#ffffff",
   timeColor: "#5fa25b",
   progressSlider: "#5fa25b",
@@ -40,15 +24,16 @@ const colors = {
   volumeSlider: "#5fa25b",
   volumeUsed: "#ffffff",
   volumeLeft: "#151616",
-  playlistBackground: "#18191f",
+  playlistBackground: "#292b30",
   playlistText: "#575a77",
   playlistBackgroundHoverActive: "#18191f",
   playlistTextHoverActive: "#ffffff",
 };
 
 function Reproductor() {
+  const tracks = [...tracksTop50]
   return (
-    <div>
+    <div className="custom-player-container"> 
       <CancionesTop50
 
         trackList={tracks}

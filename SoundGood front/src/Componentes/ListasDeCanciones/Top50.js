@@ -1,5 +1,5 @@
 
-const tracks = [
+const tracksTop50 = [
     {
       url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
       title: "Madza - Chords of Life",
@@ -16,4 +16,4 @@ const tracks = [
       tags: ["dubstep"],
     },
   ];
-export default tracks
+export default tracksTop50;
