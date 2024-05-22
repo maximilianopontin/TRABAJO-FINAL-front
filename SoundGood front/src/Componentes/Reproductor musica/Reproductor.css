@@ -1,7 +1,7 @@
 /* styles.css */
 .custom-player-container {
-    
-    height: 300px; /* Ajusta la altura deseada */
+    border: red solid;
+    height: 150px; /* Ajusta la altura deseada */
     /* Puedes agregar más estilos aquí */
   }
   

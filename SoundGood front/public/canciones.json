@@ -1,0 +1,28 @@
+[
+    {
+      "nombre": "Bohemian Rhapsody",
+      "url": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
+      "imagen": "https://via.placeholder.com/300"
+    },
+    {
+      "nombre": "Hotel California",
+      "url": "https://www.youtube.com/watch?v=EqPtz5qN7HM",
+      "imagen": "https://via.placeholder.com/300"
+    },
+    {
+      "nombre": "Imagine",
+      "url": "https://www.youtube.com/watch?v=VOgFZfRVaww",
+      "imagen": "https://via.placeholder.com/300"
+    },
+    {
+      "nombre": "Stairway to Heaven",
+      "url": "https://www.youtube.com/watch?v=xbhCPt6PZIU",
+      "imagen": "https://via.placeholder.com/300"
+    },
+    {
+      "nombre": "Let It Be",
+      "url": "https://www.youtube.com/watch?v=QDYfEBY9NM4",
+      "imagen": "https://via.placeholder.com/300"
+    }
+  ]
+  
