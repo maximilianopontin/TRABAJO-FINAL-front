@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import CancionesTop50 from "@madzadev/audio-player";
+import Canciones from "@madzadev/audio-player";
 import './Reproductor.css';
 import tracksTop50 from '../ListasDeCanciones/Top50';
 
@@ -34,7 +34,7 @@ function Reproductor() {
   const tracks = [...tracksTop50]
   return (
     <div className="custom-player-container"> 
-      <CancionesTop50
+      <Canciones
 
         trackList={tracks}
         includeTags={false}
