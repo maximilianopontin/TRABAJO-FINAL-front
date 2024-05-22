@@ -46,3 +46,13 @@
     margin-left: 10px;
     padding: 10px;
 }
+
+.cancionesEncontradas {
+    display: flex;
+    flex-direction: column; /* Alinea las canciones en columna */
+    border: 2px solid #5fa25b; /* Borde verde */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 16px; /* Espaciado interno */
+    margin: 16px 0; /* Espaciado externo entre cada grupo de resultados */
+    background-color: #f9f9f9; /* Fondo ligeramente gris */
+}

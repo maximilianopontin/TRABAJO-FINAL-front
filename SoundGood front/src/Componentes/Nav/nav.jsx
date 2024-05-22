@@ -54,7 +54,7 @@ export const Nav = () => {
             </div>
 
             {/*Se muestran los resultados de la busqueda*/}
-            <div>
+            <div className="cancionesEncontradas">
                 {searchResults.length > 0 && (
                     <div>
                         <h2>Canciones encontradas: </h2>
