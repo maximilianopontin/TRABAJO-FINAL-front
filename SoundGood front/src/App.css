@@ -7,6 +7,7 @@
   margin: 0 auto;
   text-align: center;
   background-color: rgb(9, 0, 0);
+
 }
 .logo {
   height: 6em;
@@ -33,12 +34,14 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+
 @media (max-width: 380px) {
   .container {
       width: 95%; /* Cambia el ancho de la página para dispositivos más pequeños */
       height: 100%;
   }
 }
+
 .card {
   padding: 2em;
 }
