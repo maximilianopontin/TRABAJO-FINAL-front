@@ -19,7 +19,7 @@ function App() {
     }
 
     return (
-        <>
+           <>
 
             <div>
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />}

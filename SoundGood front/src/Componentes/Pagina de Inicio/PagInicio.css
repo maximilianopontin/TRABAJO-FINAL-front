@@ -6,9 +6,6 @@
     border-radius: 3px; /* Bordes redondeados */
     cursor: pointer; /* Cursor al pasar sobre el botón */
     margin-right: 20px; /* Margen derecho para separar los botones */
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
-.logo {
-    width: 70%; /* Establece el ancho de la imagen al 100% del contenedor */
-    height: auto; /* Mantiene la relación de aspecto original de la imagen */
-  }
+/*agregar css logo*/

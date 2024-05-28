@@ -1,12 +1,62 @@
-/* styles.css */
-.custom-player-container {
+
+/*estilo contenedor */
+._wrapper_1sefb_1{
+
+  overflow: visible !important;
+
+  }
+ 
+  /*titulo cancion*/
+  ._title_1ldbx_1 {
+     font-family: inherit !important;
+   font-size: 16px!important;
+   padding-top: 10px !important;
+  }
+
+/*time*/
+._time_ac0au_1{
+  font-size: 16px!important;
+  padding-top: 10px !important;
+}
+
+
+  /*boton repetir*/
+  ._loop_1v4pf_1 {
+width: 20px !important;
+height: 20px !important;
+
+  }
+/*boton cancion anterior*/
+  ._previous_1mino_1{
+    width: 20px !important;
+    height: 20px !important;
     
-    height: 300px; /* Ajusta la altura deseada */
-    /* Puedes agregar más estilos aquí */
-  }
+      }
+/*boton play*/
+    ._play_rfl62_1 {
+      width: 20px !important;
+      height: 20px !important;
+      
+        }
+  /*boton pausa*/
+ 
+._pause_1talx_1 {
+  width: 20px !important;
+  height: 20px !important;
   
-  .custom-player-container .audio-player {
-    font-size: 12px; /* Ajusta el tamaño de fuente */
-    /* Otros ajustes de estilo */
+}
+  ._next_147p5_1 {
+    width: 20px !important;
+      height: 20px !important;
+      
   }
-  
+._shuffle_15ul3_1 {
+  width: 20px !important;
+    height: 20px !important;
+    
+} 
+  /*tiempo de cancion*/
+  ._container_1kekm_1{
+
+    margin-bottom: 10px !important;
+  }

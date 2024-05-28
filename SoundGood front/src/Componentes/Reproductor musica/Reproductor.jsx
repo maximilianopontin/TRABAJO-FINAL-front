@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Canciones from "@madzadev/audio-player";
-import './Reproductor.css';
 import tracksTop50 from '../ListasDeCanciones/Top50';
-
+import './Reproductor.css';
 
 const colors = {
   tagsBackground: "#5fa25b",
@@ -39,7 +38,7 @@ function Reproductor() {
         trackList={tracks}
         includeTags={false}
         includeSearch={false}
-        showPlaylist={true}
+        showPlaylist={false}
         sortTracks={true}
         autoPlayNextTrack={true}
         customColorScheme={colors} />
