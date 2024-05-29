@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import { PagInicioSesion } from './Componentes/Iniciar sesion/InicioSesion';
 import './Componentes/Iniciar sesion/InicioSesion.css'
-import { Nav } from './Componentes/Nav/nav';
 import PagInicio from './Componentes/Pagina de Inicio/PagInicio';
 import Footer from "./Componentes/Footer/Footer";
 
