@@ -5,7 +5,7 @@
     list-style: none;
 }
 body {
-  font-family: sans-serif;
+  font-family: inherit !important;
 }
 .container {
   max-width: 100%;
@@ -28,7 +28,7 @@ body {
   text-align: center;
 }
 .footer-links h4 {
-  font-size: 18px;
+  font-size: 16px;
   color: #FFFFFF;
   margin-bottom: 25px;
   border-bottom: 2px solid #00C3FF;
@@ -36,7 +36,7 @@ body {
   display: inline-block;
 }
 .footer-links ul li a {
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
   color: #BBBBBB;
   display: block;
