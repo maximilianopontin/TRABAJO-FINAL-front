@@ -5,6 +5,8 @@ import { useState } from "react"
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [isModalOpen, setModalOpen] = useState(false);
+
     // constante que recorre el json y filtra los resultados
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
@@ -47,6 +49,14 @@ export const Nav = () => {
                 </div>
             </div>
             {/*Se muestran los resultados de la busqueda*/}
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-contenido">
+                        
+                    </div>
+                </div>
+            )
+            }
             <div className="cancionesEncontradas">
                 {searchResults.length > 0 && (
                     <div>
