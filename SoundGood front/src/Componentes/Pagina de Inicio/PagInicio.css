@@ -6,6 +6,7 @@
     border-radius: 3px; /* Bordes redondeados */
     cursor: pointer; /* Cursor al pasar sobre el botón */
     margin-right: 20px; /* Margen derecho para separar los botones */
-    margin-bottom: 30px;
+    margin-bottom: 50px;
+    margin-top: 30px;
 }
 /*agregar css logo*/
