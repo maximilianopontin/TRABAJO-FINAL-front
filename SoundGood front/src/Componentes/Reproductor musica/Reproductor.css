@@ -1,0 +1,12 @@
+/* styles.css */
+.custom-player-container {
+    
+    height: 300px; /* Ajusta la altura deseada */
+    /* Puedes agregar más estilos aquí */
+  }
+  
+  .custom-player-container .audio-player {
+    font-size: 12px; /* Ajusta el tamaño de fuente */
+    /* Otros ajustes de estilo */
+  }
+  
