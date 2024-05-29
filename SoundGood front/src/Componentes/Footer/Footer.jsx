@@ -4,7 +4,6 @@ import "./Footer.css";
 import '@fortawesome/fontawesome-free/css/all.css';
 // Footer.js
 
-
 function Footer() {
     return (
 

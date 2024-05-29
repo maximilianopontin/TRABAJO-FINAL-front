@@ -7,19 +7,21 @@ import Footer from "./Componentes/Footer/Footer";
 
 function App() {
     const [count, setCount] = useState(0);
-
+ 
     const redirectToInicioSesion = () => {
         setCount(1);
-        // Lógica para redireccionar a la página de inicio de sesión
+        // funcion que actualizan el estado count para redireccionar a la página de inicio de sesión
+        // setCount(1) cambia el estado para mostrar la página de inicio de sesión
     }
 
     const redirectToRegistro = () => {
         setCount(2);
-        // Lógica para redireccionar a la página de registro
+        // funcion que actualiza el estado count para redireccionar a la página de registro
+        // setCount(2) para mostrar la página de registro.
     }
 
     return (
-        <>
+           <>
 
             <div>
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />}
