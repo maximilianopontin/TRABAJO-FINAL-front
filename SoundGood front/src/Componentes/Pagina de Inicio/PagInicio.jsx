@@ -1,5 +1,4 @@
 
-
 // en esta seccion se muestra la pagina de inicio para registro e inicio de seccion
 
 import React from "react";
@@ -33,5 +32,6 @@ function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
 }
 
 export default PagInicio;
+
 
 
