@@ -1,5 +1,6 @@
 import { Logo } from "../../logo/logo"
 import './Nav.css'
+import './modal.css'
 import { useState } from "react"
 
 export const Nav = () => {
@@ -19,6 +20,7 @@ export const Nav = () => {
                     song.nombre.toLowerCase().includes(searchTerm.toLowerCase())
                 );
                 setSearchResults(filteredResults);
+                setModalOpen(true); // abre el modal cuando se encuentra la cancion
                 setSearchTerm('');
             })
             .catch(error => console.error('Error al obtener datos:', error));
@@ -49,17 +51,12 @@ export const Nav = () => {
                 </div>
             </div>
             {/*Se muestran los resultados de la busqueda*/}
-            {isModalOpen && (
+           {isModalOpen && (
+            <div className="con-modal">
                 <div className="modal">
+                     
                     <div className="modal-contenido">
-                        
-                    </div>
-                </div>
-            )
-            }
-            <div className="cancionesEncontradas">
-                {searchResults.length > 0 && (
-                    <div>
+                        <span className="close" onClick={() => setModalOpen(false)}> x </span>
                         <h2>Canciones encontradas: </h2>
                         <ul>
                             {searchResults.map((song, index) => (
@@ -68,9 +65,12 @@ export const Nav = () => {
                                 </p>
                             ))}
                         </ul>
-                    </div>
-                )}
+                    </div>   
+           </div> 
             </div>
+                
+        )} 
+            
         </nav>
     )
 }
