@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from "react"
-import CancionesTop50 from "@madzadev/audio-player";
+import Canciones from "@madzadev/audio-player";
 import './Reproductor.css';
 
 const colors = { // colores personalizados que se usarán para estilizar el componente de audio Canciones.

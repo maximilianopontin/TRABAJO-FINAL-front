@@ -1,21 +1,18 @@
 import { Logo } from "../../logo/logo"
-import './nav.css'
+import './Nav.css'
+import './modal.css'
 import { useState } from "react"
 
-
-
 export const Nav = () => {
-
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [isModalOpen, setModalOpen] = useState(false);
 
     // constante que recorre el json y filtra los resultados
     const handleSearch = () => {
-
         if (searchTerm.trim() === '') {
             return; // no hacer nada si el campo de búsqueda está vacío
         }
-
         fetch('canciones.json')
             .then(response => response.json())
             .then(data => {
@@ -23,6 +20,7 @@ export const Nav = () => {
                     song.nombre.toLowerCase().includes(searchTerm.toLowerCase())
                 );
                 setSearchResults(filteredResults);
+                setModalOpen(true); // abre el modal cuando se encuentra la cancion
                 setSearchTerm('');
             })
             .catch(error => console.error('Error al obtener datos:', error));
@@ -52,11 +50,13 @@ export const Nav = () => {
                     <a href="">Cuenta</a>
                 </div>
             </div>
-
             {/*Se muestran los resultados de la busqueda*/}
-            <div className="cancionesEncontradas">
-                {searchResults.length > 0 && (
-                    <div>
+           {isModalOpen && (
+            <div className="con-modal">
+                <div className="modal">
+                     
+                    <div className="modal-contenido">
+                        <span className="close" onClick={() => setModalOpen(false)}> x </span>
                         <h2>Canciones encontradas: </h2>
                         <ul>
                             {searchResults.map((song, index) => (
@@ -65,9 +65,12 @@ export const Nav = () => {
                                 </p>
                             ))}
                         </ul>
-                    </div>
-                )}
+                    </div>   
+           </div> 
             </div>
+                
+        )} 
+            
         </nav>
     )
 }
