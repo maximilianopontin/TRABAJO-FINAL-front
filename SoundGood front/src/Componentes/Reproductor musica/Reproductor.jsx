@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from "react"
-import Canciones from "@madzadev/audio-player"; //componente importado de la biblioteca
+import Canciones from "@madzadev/audio-player";
 import './Reproductor.css';
 
 const colors = { // colores personalizados que se usarán para estilizar el componente de audio Canciones.
@@ -40,16 +40,16 @@ function Reproductor() {
 
   return (
     <div>
-      {tracks.length > 0 && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
-        <Canciones
+    {tracks.length > 0 && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
+      <Canciones
 
-          trackList={tracks}
-          includeTags={false}
-          includeSearch={false}
-          showPlaylist={false}
-          sortTracks={true}
-          autoPlayNextTrack={true}
-          customColorScheme={colors} />
+        trackList={tracks}
+        includeTags={false}
+        includeSearch={false}
+        showPlaylist={false}
+        sortTracks={true}
+        autoPlayNextTrack={true}
+        customColorScheme={colors} />
 
       )}
     </div>
