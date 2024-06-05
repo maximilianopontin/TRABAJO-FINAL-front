@@ -1,4 +1,5 @@
 
+
 /*estilo contenedor */
 ._wrapper_1sefb_1{
 
@@ -43,6 +44,14 @@ height: 20px !important;
 ._pause_1talx_1 {
   width: 20px !important;
   height: 20px !important;
+
+/* styles.css */
+.custom-player-container {
+    border: red solid;
+    height: 150px; /* Ajusta la altura deseada */
+    /* Puedes agregar más estilos aquí */
+  }
+
   
 }
   ._next_147p5_1 {
