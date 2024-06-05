@@ -1,7 +1,7 @@
 //en esta seccion se muestra la pagina de inicio para registro e inicio de seccion
 import React, { useState } from "react"
 import logo from '../../logo/logo.png'
-
+import "./InicioSesion.css"
 
 
 export function PagInicioSesion() {
