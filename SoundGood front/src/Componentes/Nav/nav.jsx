@@ -1,9 +1,9 @@
 import { Logo } from "../../logo/logo"
-import './Nav.css'
+import './nav.css'
 import './modal.css'
 import { useState } from "react"
 
-export const Nav = () => {
+export const Nav = () =>  {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
@@ -13,11 +13,11 @@ export const Nav = () => {
         if (searchTerm.trim() === '') {
             return; // no hacer nada si el campo de búsqueda está vacío
         }
-        fetch('canciones.json')
+        fetch('CancionesTop50.json')
             .then(response => response.json())
             .then(data => {
                 const filteredResults = data.filter(song =>
-                    song.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+                    song.titulo.toLowerCase().includes(searchTerm.toLowerCase())
                 );
                 setSearchResults(filteredResults);
                 setModalOpen(true); // abre el modal cuando se encuentra la cancion
