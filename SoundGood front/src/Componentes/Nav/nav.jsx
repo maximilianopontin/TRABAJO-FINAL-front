@@ -1,5 +1,5 @@
 import { Logo } from "../../logo/logo"
-import './nav.css'
+import './Nav.css'
 import './modal.css'
 import { useState } from "react"
 
