@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import PagInicio from './Componentes/Pagina de Inicio/PagInicio';
 //import  PagRegistro  from './Componentes/Registro/Registro';
-//import PagInicioSesion from './Componentes/Iniciar sesion/InicioSesion';
+import {PagInicioSesion} from './Componentes/Iniciar sesion/InicioSesion';
 import Footer from "./Componentes/Footer/Footer";
 
 function App() {
