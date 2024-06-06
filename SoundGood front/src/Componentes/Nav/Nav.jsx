@@ -1,5 +1,6 @@
 import { Logo } from "../../logo/logo"
 import './Nav.css'
+import './modal.css';
 import { useState } from "react"
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
