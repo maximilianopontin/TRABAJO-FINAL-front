@@ -2,11 +2,13 @@ import { Logo } from "../../logo/logo";
 import './Nav.css';
 import './modal.css';
 import { useState } from "react";
+import Reproductor from "../Reproductor musica/ReproductorBuscador";
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
+    const [songUrlReproductor, setSongUrlReproductor] = useState(null); // almacena la URL de la cancion seleccionada
 
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
@@ -24,12 +26,17 @@ export const Nav = () => {
             })
             .catch(error => console.error('Error al obtener datos:', error));
     };
-
+//el boton de buscar anda cuando apreto enter
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
         }
     };
+    //Funcion que maneja la URL de la cancion cuando se selecciona
+    const handleSongSelec = (url) => {
+        setSongUrlReproductor(url);
+        setModalOpen(false);
+    }
 
     return (
         <nav>
@@ -56,10 +63,10 @@ export const Nav = () => {
                         <div className="modal-content">
                             <span className="close" onClick={() => setModalOpen(false)}>×</span>
                             <h2>Canciones encontradas:</h2>
-                            <ul>
+                            <ul> {/* renderiza la busqueda mediante el click de buscar*/}
                                 {searchResults.map((song, index) => (
                                     <li key={index}>
-                                        <a href={song.url}>{song.nombre}</a>
+                                        <a href={"#"} onClick={() => handleSongSelec(song.url)}>{song.title}</a>
                                     </li>
                                 ))}
                             </ul>
@@ -67,6 +74,7 @@ export const Nav = () => {
                     </div>
                 </div>
             )}
+         <Reproductor songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
         </nav>
     );
 };
