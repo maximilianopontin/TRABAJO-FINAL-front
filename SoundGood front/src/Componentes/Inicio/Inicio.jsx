@@ -3,7 +3,7 @@ import Reproductor from '../Reproductor musica/Reproductor';
 import Footer from "./Componentes/Footer/Footer";
 
 
-export function Inicio() {
+export function Home() {
     return (
         <>
 

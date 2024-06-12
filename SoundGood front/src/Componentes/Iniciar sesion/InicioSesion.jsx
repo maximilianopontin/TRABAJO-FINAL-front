@@ -5,7 +5,7 @@ import "./InicioSesion.css"
 
 
 
-export function PagInicioSesion({redirectToInicio}) {
+export function PagInicioSesion({redirectToHome}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -74,7 +74,7 @@ export function PagInicioSesion({redirectToInicio}) {
                 <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange}
                     required />
 
-                <button onClick={redirectToInicio}>Iniciar sesion</button> {/* Redireccion a Inico*/}
+                <button onClick={redirectToHome}>Iniciar sesion</button> {/* Redireccion a Home*/}
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}
