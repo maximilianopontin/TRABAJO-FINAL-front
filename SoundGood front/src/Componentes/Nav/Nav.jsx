@@ -75,6 +75,9 @@ export const Nav = () => {
                 </div>
             )}
          <Reproductor songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
+         <div>
+            <Reproductor />
+           </div>
         </nav>
     );
 };
