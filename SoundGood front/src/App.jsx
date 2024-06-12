@@ -5,6 +5,7 @@ import { PagRegistro } from './Componentes/Registro/Registro';
 import {PagInicioSesion} from './Componentes/Iniciar sesion/InicioSesion';
 import Footer from "./Componentes/Footer/Footer";
 import { Nav } from './Componentes/Nav/Nav';
+import Reproductor from './Componentes/Reproductor musica/ReproductorBuscador';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -32,6 +33,7 @@ function App() {
 
            <>
            <Nav/>
+           
             <div>
  
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />} {/* Rediccionamineto de la pagina Inicio a Registro y Inico Sesion*/}
