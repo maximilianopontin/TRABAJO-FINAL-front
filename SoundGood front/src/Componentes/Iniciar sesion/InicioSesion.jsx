@@ -4,7 +4,8 @@ import logo from '../../logo/logo.png'
 import "./InicioSesion.css"
 
 
-export function PagInicioSesion() {
+
+export function PagInicioSesion({redirectToInicio}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -73,7 +74,7 @@ export function PagInicioSesion() {
                 <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange}
                     required />
 
-                <button type="submit">Iniciar sesion</button>
+                <button onClick={redirectToInicio}>Iniciar sesion</button>
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}

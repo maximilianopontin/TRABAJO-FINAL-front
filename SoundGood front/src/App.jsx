@@ -20,6 +20,9 @@ function App() {
         // funcion que actualiza el estado count para redireccionar a la página de registro
         // setCount(2) para mostrar la página de registro.
     }
+    const redirectToInicio = () =>{
+        setCount(3);
+    }
 
     return (
 
@@ -27,7 +30,7 @@ function App() {
            <Nav/>
             <div>
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />}
-                {count === 1 && <PagInicioSesion />}
+                {count === 1 && <PagInicioSesion redirectToInicio={redirectToInicio}/>}
                 {count === 2 && <PagRegistro />} {/* Aquí importamos y usamos el componente PagRegistro */}
             </div>
 
