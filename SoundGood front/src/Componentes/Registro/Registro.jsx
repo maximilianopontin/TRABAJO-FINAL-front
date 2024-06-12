@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 //import registro from '../../../public/registro.json'
 
-export function PagRegistro() {
+export function PagRegistro({redirectToInicioSesion}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -119,7 +119,7 @@ export function PagRegistro() {
 
 
 
-                <button type="sudmit">Registrarse</button>
+                <button onClick={redirectToInicioSesion}>Registrarse</button>
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}
