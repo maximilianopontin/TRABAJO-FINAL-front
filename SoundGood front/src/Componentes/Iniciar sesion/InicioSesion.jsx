@@ -74,7 +74,7 @@ export function PagInicioSesion({redirectToInicio}) {
                 <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange}
                     required />
 
-                <button onClick={redirectToInicio}>Iniciar sesion</button>
+                <button onClick={redirectToInicio}>Iniciar sesion</button> {/* Redireccion a Inico*/}
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}
