@@ -90,6 +90,7 @@ export function PagRegistro({redirectToInicioSesion}) {
     return (
         <div>
             <img src={logo} alt="" />
+            
             <form className="form" onSubmit={handlerFormSudmit}>
 
                 <input type="text" name="email" placeholder="Email" value={email} onChange={hadleEmailChange} required />
@@ -111,13 +112,12 @@ export function PagRegistro({redirectToInicioSesion}) {
                     placeholderText="Fecha de nacimiento"
                     dateFormat="dd/MM/yyyy"
                     className="date-picker"
-                />
+                required/>
+
                 <div className="parrafos">
                     <p>Términos y Condiciones de SoundGood</p>
                     <p>Al registrarte en SoundGood, aceptas nuestros términos y condiciones. Por favor, asegúrate de revisarlos periódicamente, ya que pueden cambiar. Gracias por unirte a nuestra comunidad musical.</p>
                 </div>
-
-
 
                 <button onClick={redirectToInicioSesion}>Registrarse</button>
 
