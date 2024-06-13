@@ -2,7 +2,7 @@ import { Logo } from "../../logo/logo";
 import './Nav.css';
 import './modal.css';
 import { useState } from "react";
-import Reproductor from "../Reproductor musica/ReproductorBuscador";
+import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -49,7 +49,8 @@ export const Nav = () => {
                         placeholder="Buscar..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        onKeyDown={handleKeyDown} />
+                        onKeyDown={handleKeyDown} 
+                        />
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>
                 <div className="nav-links">
@@ -74,10 +75,8 @@ export const Nav = () => {
                     </div>
                 </div>
             )}
-         <Reproductor songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
-         <div>
-            <Reproductor />
-           </div>
+         <ReproductorNav songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
+        
         </nav>
     );
 };

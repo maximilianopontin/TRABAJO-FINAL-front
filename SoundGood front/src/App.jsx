@@ -26,10 +26,6 @@ function App() {
 
            <>
            <Nav/>
-           <div>
-            <Reproductor />
-           </div>
-           
             <div>
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />}
                 {count === 1 && <PagInicioSesion />}

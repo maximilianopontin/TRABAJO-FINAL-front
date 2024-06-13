@@ -5,6 +5,7 @@ import React from "react";
 import { Logo } from '../../logo/logo';
 import './PagInicio.css';
 import Reproductor from '../Reproductor musica/Reproductor';
+import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
 
 //El componente PagInicio recibe dos props
 function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
@@ -22,7 +23,7 @@ function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
 
 
             <div>
-                <Reproductor />
+                <ReproductorNav />
             </div>
 
         </div>
