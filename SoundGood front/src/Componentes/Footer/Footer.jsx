@@ -2,7 +2,7 @@
 import React from 'react';
 import "./Footer.css";
 import '@fortawesome/fontawesome-free/css/all.css';
-
+//referenciar a archivo nuevo opr cada link arcor, 
 function Footer() {
     return (
         <footer id="footer" class="footer">
