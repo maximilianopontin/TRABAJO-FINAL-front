@@ -3,7 +3,7 @@ import React from 'react';
 import "./Footer.css";
 import '@fortawesome/fontawesome-free/css/all.css';
 
-function Footer() {
+function Footer({ redirectToAcercaDe, redirectToEmpleo, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     return (
         <footer id="footer" class="footer">
             <div class="container">
@@ -11,18 +11,19 @@ function Footer() {
                     <div class="footer-links">
                         <h4 class="footer-title">Compañia</h4>
                         <ul>
-                            <li><a href="#">Acerca de</a></li>
-                            <li><a href="#">Empleo</a></li>
-                            
+{/*al hacer clic en ellos, se utilizará la función e.preventDefault() para evitar la navegación predeterminada y llamar a las funciones de redirección que actualizan el estado count en el componente App*/ }
+                            <li><a href="#" onClick={e => { e.preventDefault(); redirectToAcercaDe(); }}>Acerca de</a></li>
+                            <li><a href="#" onClick={e => { e.preventDefault(); redirectToEmpleo(); }}>Empleo</a></li>
+
                         </ul>
                     </div>
                     <div class="footer-links">
                         <h4 class="footer-title">Enlaces Utiles</h4>
                         <ul>
-                            <li><a href="#">Plan Premium</a></li>
-                            <li><a href="#">Version Gratuita</a></li>
-                            <li><a href="#">Ayudas</a></li>
-                           
+                            <li><a href="#" onClick={e => { e.preventDefault(); redirectToPlanPremium(); }}>Plan Premium</a></li>
+                            <li><a href="#" onClick={e => { e.preventDefault(); redirectToVersionGratuita(); }}>Versión Gratuita</a></li>
+                            <li><a href="#" onClick={e => { e.preventDefault(); redirectToAyudas(); }}>Ayudas</a></li>
+
                         </ul>
                     </div>
                     <div class="footer-links">
