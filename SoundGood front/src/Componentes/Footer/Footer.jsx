@@ -3,7 +3,7 @@ import React from 'react';
 import "./Footer.css";
 import '@fortawesome/fontawesome-free/css/all.css';
 
-function Footer({ redirectToAcercaDe, redirectToEmpleo, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
+function Footer({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     return (
         <footer id="footer" class="footer">
             <div class="container">
@@ -11,9 +11,9 @@ function Footer({ redirectToAcercaDe, redirectToEmpleo, redirectToPlanPremium, r
                     <div class="footer-links">
                         <h4 class="footer-title">Compañia</h4>
                         <ul>
-{/*al hacer clic en ellos, se utilizará la función e.preventDefault() para evitar la navegación predeterminada y llamar a las funciones de redirección que actualizan el estado count en el componente App*/ }
+                            {/*al hacer clic en ellos, se utilizará la función e.preventDefault() para evitar la navegación predeterminada y llamar a las funciones de redirección que actualizan el estado count en el componente App*/}
                             <li><a href="#" onClick={e => { e.preventDefault(); redirectToAcercaDe(); }}>Acerca de</a></li>
-                            <li><a href="#" onClick={e => { e.preventDefault(); redirectToEmpleo(); }}>Empleo</a></li>
+
 
                         </ul>
                     </div>
