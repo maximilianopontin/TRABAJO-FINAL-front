@@ -13,8 +13,8 @@ function App() {
   return (
     <>
       <div>
-       <Nav/>
-      <PagInicioSesion />
+      {/*<Nav/>*/} 
+      {/*<PagInicioSesion />*/}
       </div>
       <div>
         <Footer/>
