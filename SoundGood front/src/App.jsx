@@ -9,7 +9,7 @@ import AcercaDe from './Componentes/Footer/AcercaDe';
 import PlanPremium from './Componentes/Footer/PlanPremium';
 import VersionGratuita from './Componentes/Footer/VersionGratuita';
 import Ayudas from './Componentes/Footer/Ayudas';
-
+import { Nav } from './Componentes/Nav/Nav';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -49,7 +49,9 @@ function App() {
     return (
 
         <>
-         
+         <div>
+            <Nav/>
+         </div>
 
             <div>
 
