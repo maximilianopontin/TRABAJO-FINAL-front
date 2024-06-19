@@ -43,7 +43,10 @@ export const Nav = () => {
         <nav>
             <div className="navbar">
                 <div className="nav-logo">
+                    <a href="./Inicio/Inicio">
                     <Logo />
+                    </a> 
+                    
                 </div>
                 <div className="nav-buscador">
                     <input type="text"

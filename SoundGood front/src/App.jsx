@@ -6,10 +6,7 @@ import { PagRegistro } from './Componentes/Registro/Registro';
 import { PagInicioSesion } from './Componentes/Iniciar sesion/InicioSesion';
 import Footer from "./Componentes/Footer/Footer";
 import { Nav } from './Componentes/Nav/Nav';
-import Reproductor from './Componentes/Reproductor musica/ReproductorBuscador';
-import { PagInicioSesion } from './Componentes/Iniciar sesion/InicioSesion';
 import './Componentes/Iniciar sesion/InicioSesion.css'
-import Footer from './Componentes/Footer/Footer';
 import AcercaDe from './Componentes/Footer/AcercaDe';
 import PlanPremium from './Componentes/Footer/PlanPremium';
 import VersionGratuita from './Componentes/Footer/VersionGratuita';
