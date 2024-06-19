@@ -2,7 +2,7 @@ import React from 'react';
 import './Links.css';
 function AcercaDe({ redirectToHome }) {
     return (
-        <div>
+        <div className='container-link'>
            <h1>Acerca de nosotros</h1>
             <h2>SOUNGOOD es un servicio de música digital y podcasts que te brinda acceso a millones de canciones de artistas de todo el mundo.</h2>
             <p>

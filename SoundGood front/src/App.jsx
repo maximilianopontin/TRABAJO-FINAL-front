@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-
 import PagInicio from './Componentes/Pagina de Inicio/PagInicio';
 import { PagRegistro } from './Componentes/Registro/Registro';
 import { PagInicioSesion } from './Componentes/Iniciar sesion/InicioSesion';
-import Footer from "./Componentes/Footer/Footer";
-import { Nav } from './Componentes/Nav/Nav';
+import Footer from "./Componentes/Footer/Footer"
 import './Componentes/Iniciar sesion/InicioSesion.css'
 import AcercaDe from './Componentes/Footer/AcercaDe';
 import PlanPremium from './Componentes/Footer/PlanPremium';
@@ -35,15 +33,23 @@ function App() {
     }
     // Funciones para actualizar el estado y redirigir a las diferentes páginas
 
-    const redirectToAcercaDe = () => setCount(4);
-    const redirectToPlanPremium = () => setCount(5);
-    const redirectToVersionGratuita = () => setCount(6);
-    const redirectToAyudas = () => setCount(7);
+    const redirectToAcercaDe = () => {
+        setCount(4);
 
+    }
+    const redirectToPlanPremium = () => {
+        setCount(5);
+    }
+    const redirectToVersionGratuita = () => {
+        setCount(6);
+    }
+    const redirectToAyudas = () => {
+        setCount(7);
+    }
     return (
 
         <>
-            <Nav />
+         
 
             <div>
 

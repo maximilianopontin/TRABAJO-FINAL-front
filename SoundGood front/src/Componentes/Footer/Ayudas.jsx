@@ -2,7 +2,7 @@ import React from 'react';
 import './Links.css';
 function Ayudas({ redirectToHome }) {
     return (
-        <div>
+        <div className='container-link'>
            <h1>¿Cómo te podemos ayudar?</h1>
             <h2>Actualizaciones de precios</h2>
             <p>
