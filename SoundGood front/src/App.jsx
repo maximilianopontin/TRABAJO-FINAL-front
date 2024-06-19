@@ -9,6 +9,7 @@ import AcercaDe from './Componentes/Footer/AcercaDe';
 import PlanPremium from './Componentes/Footer/PlanPremium';
 import VersionGratuita from './Componentes/Footer/VersionGratuita';
 import Ayudas from './Componentes/Footer/Ayudas';
+import {Nav} from './Componentes/Nav/Nav'
 
 
 function App() {
@@ -49,8 +50,7 @@ function App() {
     return (
 
         <>
-         
-
+ <Nav/>
             <div>
 
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />} {/* Rediccionamineto de la pagina Inicio a Registro y Inico Sesion*/}

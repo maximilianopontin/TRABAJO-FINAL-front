@@ -17,7 +17,7 @@ export const Nav = () => {
         }
         fetch('CancionesTop50.json')
             .then(response => response.json())
-            .then(data => {
+            .then(data => { 
                 const filteredResults = data.filter(song =>
                     song.title.toLowerCase().includes(searchTerm.toLowerCase())
                 );
@@ -43,9 +43,7 @@ export const Nav = () => {
         <nav>
             <div className="navbar">
                 <div className="nav-logo">
-                    <a href="./Inicio/Inicio">
                     <Logo />
-                    </a> 
                     
                 </div>
                 <div className="nav-buscador">
