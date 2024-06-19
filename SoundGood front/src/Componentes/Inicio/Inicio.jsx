@@ -8,7 +8,7 @@ export function Home() {
         <>
 
         <div>
-                <Reproductor />
+                <Reproductor/>
             </div>
             
             <div>

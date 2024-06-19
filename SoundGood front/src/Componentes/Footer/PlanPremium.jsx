@@ -2,7 +2,7 @@ import React from 'react';
 import './Links.css';
 function PlanPremium({ redirectToHome }) {
     return (
-        <div >
+        <div className='container-link'>
         <h1>Plan Premium</h1>
         <h2>Notá la diferencia.</h2>
         <p>Elegí un plan Premium y escuchá música sin anuncios y sin límites en tu teléfono, parlante y otros dispositivos. Accedé a varias formas de pago. Cancelá cuando quieras.</p>

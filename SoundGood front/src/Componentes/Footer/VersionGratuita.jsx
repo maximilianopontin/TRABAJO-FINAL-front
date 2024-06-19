@@ -3,7 +3,7 @@ import './Links.css';
 
 function VersionGratuita({ redirectToHome }) {
     return (
-        <div>
+        <div className='container-link'>
             <h1>Versión Gratuita!!!</h1>
             <h2>Reproducí millones de canciones y podcasts de forma gratuita.</h2>
             <h3>¿Por qué elegir Soundgood?</h3>
