@@ -84,7 +84,6 @@ export function PagRegistro({redirectToInicioSesion}) {
         setErrorMessage('');
         setNombre('');
         setFechaNacimiento(null);
-
     }
 
     return (
@@ -111,7 +110,7 @@ export function PagRegistro({redirectToInicioSesion}) {
                     onChange={(date) => setFechaNacimiento(date)}
                     placeholderText="Fecha de nacimiento"
                     dateFormat="dd/MM/yyyy"
-                    className="date-picker"
+                    className="date-pickerr"
                 required/>
 
                 <div className="parrafos">
