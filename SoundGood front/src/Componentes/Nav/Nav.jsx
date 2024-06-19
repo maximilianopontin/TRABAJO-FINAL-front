@@ -32,10 +32,7 @@ export const Nav = () => {
             <div className="navbar">
                 <div className="nav-logo">
                     <Logo />
-<<<<<<< HEAD
-                    
-=======
->>>>>>> ca024cb4ea41944802e88b09bc4f2f406f31a209
+
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
