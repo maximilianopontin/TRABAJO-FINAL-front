@@ -1,57 +1,48 @@
-import { Logo } from "../../logo/logo";
-import './Nav.css';
+import { Logo } from "../../logo/logo"
+import './Nav.css'
 import './modal.css';
-import { useState } from "react";
-import Reproductor from "../Reproductor musica/ReproductorBuscador";
-
-
+import { useState } from "react"
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [songUrlReproductor, setSongUrlReproductor] = useState(null); // almacena la URL de la cancion seleccionada
-
+    // constante que recorre el json y filtra los resultados
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
-            return;
+            return; // no hacer nada si el campo de búsqueda está vacío
         }
-        fetch('CancionesTop50.json')
+        fetch('canciones.json')
             .then(response => response.json())
             .then(data => { 
                 const filteredResults = data.filter(song =>
-                    song.title.toLowerCase().includes(searchTerm.toLowerCase())
+                    song.nombre.toLowerCase().includes(searchTerm.toLowerCase())
                 );
                 setSearchResults(filteredResults);
-                setModalOpen(true);
                 setSearchTerm('');
             })
             .catch(error => console.error('Error al obtener datos:', error));
     };
-//el boton de buscar anda cuando apreto enter
+    // constante para hacer funcionar la tecla enter para la busqueda
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
         }
     };
-    //Funcion que maneja la URL de la cancion cuando se selecciona
-    const handleSongSelec = (url) => {
-        setSongUrlReproductor(url);
-        setModalOpen(false);
-    }
-
     return (
-        <nav>
+        <nav >
             <div className="navbar">
                 <div className="nav-logo">
                     <Logo />
+<<<<<<< HEAD
                     
+=======
+>>>>>>> ca024cb4ea41944802e88b09bc4f2f406f31a209
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
                         placeholder="Buscar..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        onKeyDown={handleKeyDown} />
+                        onKeyDown={handleKeyDown} /> {/* Buasca la cancion precionando la tecla enter */}
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>
                 <div className="nav-links">
@@ -59,27 +50,21 @@ export const Nav = () => {
                     <a href="">Cuenta</a>
                 </div>
             </div>
-            {isModalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <div className="modal-content">
-                            <span className="close" onClick={() => setModalOpen(false)}>×</span>
-                            <h2>Canciones encontradas:</h2>
-                            <ul> {/* renderiza la busqueda mediante el click de buscar*/}
-                                {searchResults.map((song, index) => (
-                                    <li key={index}>
-                                        <a href={"#"} onClick={() => handleSongSelec(song.url)}>{song.title}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+            {/*Se muestran los resultados de la busqueda*/}
+            <div className="cancionesEncontradas">
+                {searchResults.length > 0 && (
+                    <div>
+                        <h2>Canciones encontradas: </h2>
+                        <ul>
+                            {searchResults.map((song, index) => (
+                                <p key={index}>
+                                    <a href={song.url}>{song.nombre}</a>
+                                </p>
+                            ))}
+                        </ul>
                     </div>
-                </div>
-            )}
-         <Reproductor songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
-         <div>
-            <Reproductor />
-           </div>
+                )}
+            </div>
         </nav>
-    );
-};
+    )
+}
