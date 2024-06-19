@@ -40,6 +40,7 @@ function App() {
                 {count === 1 && <PagInicioSesion redirectToHome={redirectToHome}/>} {/* Rediccionamineto de la pagina Inicio sesio a Home*/}
                 {count === 2 && <PagRegistro redirectToInicioSesion={redirectToInicioSesion}/>} {/* Aquí importamos y usamos el componente PagRegistro */}
             </div>
+           
 
             <div>
                 <Footer />

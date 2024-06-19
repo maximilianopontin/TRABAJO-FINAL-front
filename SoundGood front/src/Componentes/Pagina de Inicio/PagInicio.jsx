@@ -22,7 +22,7 @@ function PagInicio({ redirectToInicioSesion, redirectToRegistro }) {
 
 
             <div>
-                <Reproductor />
+                <Reproductor/>
             </div>
 
         </div>
