@@ -11,6 +11,9 @@ import VersionGratuita from './Componentes/Footer/VersionGratuita';
 import Ayudas from './Componentes/Footer/Ayudas';
 import { Nav } from './Componentes/Nav/Nav';
 
+import { Inicio } from './Componentes/Inicio/Inicio';
+
+
 
 function App() {
     const [count, setCount] = useState(0);
@@ -48,11 +51,10 @@ function App() {
         setCount(7);
     }
     return (
-
         <>
 
 
- <Nav/>
+            <Nav />
 
             <div>
 
@@ -64,7 +66,7 @@ function App() {
                 {count === 6 && <VersionGratuita redirectToHome={redirectToHome} />}
                 {count === 7 && <Ayudas redirectToHome={redirectToHome} />}
             </div>
-           
+
 
             <div>
                 <Footer redirectToAcercaDe={redirectToAcercaDe}
@@ -74,9 +76,9 @@ function App() {
                 />{/* Renderiza el componente del footer con las funciones de redirección */}
             </div>
 
-        </>
-    );
+            </>
+            );
 
 }
 
-export default App
+            export default App

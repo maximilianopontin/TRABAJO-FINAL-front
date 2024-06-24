@@ -1,0 +1,53 @@
+.song-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.song-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.song-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.song-card p {
+    margin: 0.5em 0 0 0;
+    color: #666;
+    font-size: 0.9em;
+}
+.song-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px; /* Espacio entre las tarjetas */
+    padding: 16px; /* Espacio alrededor de la lista */
+}
+
+.song-list div {
+    flex: 1 1 calc(33.333% - 32px); /* Tres tarjetas por fila */
+    max-width: calc(33.333% - 32px);
+    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+}
+
+@media (max-width: 768px) {
+    .song-list div {
+        flex: 1 1 calc(50% - 16px); /* Dos tarjetas por fila en pantallas más pequeñas */
+        max-width: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 480px) {
+    .song-list div {
+        flex: 1 1 100%; /* Una tarjeta por fila en pantallas pequeñas */
+        max-width: 100%;
+    }
+}
