@@ -1,34 +1,33 @@
 import React, { useState } from "react";
-import logo from '../../logo/logo.png'
-import './Registro.css'
+import logo from '../../logo/logo.png';
+import './Registro.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-//import registro from '../../../public/registro.json'
 
-export function PagRegistro({redirectToInicioSesion}) {
+export function PagRegistro({ redirectToInicioSesion }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [nombre, setNombre] = useState('');
     const [fechaNacimiento, setFechaNacimiento] = useState(null);
 
-    //validamos que la contraseña y email cumpla con las condiciones dadas.
-    const handlerFormSudmit = (e) => {
+    // Validamos que la contraseña y email cumpla con las condiciones dadas.
+    const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        // validamos el email
+        // Validamos el email
         if (!validateEmail(email)) {
-            setErrorMessage('El email debe ser valido');
+            setErrorMessage('El email debe ser válido.');
             return;
         }
-        //validamos la contraseña
+        // Validamos la contraseña
         if (!validatePassword(password)) {
-            setErrorMessage('La contraseña debe tener al menos una mayuscula, un numero y simbolo.');
+            setErrorMessage('La contraseña debe tener al menos una mayúscula, un número y un símbolo.');
             return;
         }
         // Validaciones de nombre
-        if (nombre.trim() === '') { // el meto TRIM() limpia los espacios que pude llegar a poner el usuario
-            setErrorMessage('Por favor ingresa tu nombre.');
+        if (nombre.trim() === '') { // El método TRIM() limpia los espacios que puede llegar a poner el usuario
+            setErrorMessage('Por favor, ingresa tu nombre.');
             return;
         }
         // Validación de la fecha de nacimiento
@@ -36,39 +35,53 @@ export function PagRegistro({redirectToInicioSesion}) {
             setErrorMessage('Por favor, selecciona tu fecha de nacimiento.');
             return;
         }
-        //constante para poder cargar el json ??????????????????????
+        if (!validateFechaNacimiento(fechaNacimiento)) {
+            setErrorMessage('La fecha de nacimiento debe ser anterior al 1 de enero de 2023.');
+            return;
+        }
+
+
+        // Constante para poder cargar el JSON (ejemplo de uso, ya que no hay detalles específicos sobre el almacenamiento de datos)
         const userData = {
             email,
             password,
             nombre,
             fechaNacimiento: fechaNacimiento ? fechaNacimiento.toISOString() : null
         };
-        // const updatedClientes = [...registro.clientes, userData];
-        // const updatedRegistro = { clientes: updatedClientes };
-        // localStorage.setItem('registro', JSON.stringify(updatedRegistro));
 
-        clearFrom(); //si el form se envia correctamente, este se limpia
+        // Puedes agregar aquí la lógica para almacenar el userData en localStorage o enviarlo a un servidor
+
+        clearForm(); // Si el formulario se envía correctamente, este se limpia
+        redirectToInicioSesion() /* Redireccion a Inicio sesio*/
     }
-    //Validacion para el email
+
+    // Validación para el email
     const validateEmail = (email) => {
         const conditionEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return conditionEmail.test(email);
     }
-    //Validacion para las condiciones de la contraseña
+
+    // Validación para las condiciones de la contraseña
     const validatePassword = (password) => {
-        const conditionPassaword = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-        return conditionPassaword.test(password);
+        const conditionPassword = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        return conditionPassword.test(password);
     }
-    //Validamos sin el email cumple con las condicones
-    const hadleEmailChange = (e) => {
+    //Validacion para las condiciones de la fecha de nacimiento
+    const validateFechaNacimiento = (date) => {
+        const cutoffDate = new Date('2023-01-01');
+        return date < cutoffDate;
+    }
+
+    // Validamos si el email cumple con las condiciones
+    const handleEmailChange = (e) => {
         const newEmail = e.target.value;
         setEmail(newEmail);
         setErrorMessage('');
     }
 
-    //validamos si la contraseña esta bien o mal
+    // Validamos si la contraseña está bien o mal
     const handlePasswordChange = (e) => {
-        const newPassword = e.target.value
+        const newPassword = e.target.value;
         setPassword(newPassword);
         if (validatePassword(newPassword)) {
             setErrorMessage('');
@@ -77,35 +90,29 @@ export function PagRegistro({redirectToInicioSesion}) {
         }
     }
 
-    //Liampiar el form
-    const clearFrom = () => {
+    // Limpiar el formulario
+    const clearForm = () => {
         setEmail('');
         setPassword('');
         setErrorMessage('');
         setNombre('');
         setFechaNacimiento(null);
-
     }
 
     return (
         <div>
-            <img src={logo} alt="" />
-            <form className="form" onSubmit={handlerFormSudmit}>
-
-                <input type="text" name="email" placeholder="Email" value={email} onChange={hadleEmailChange} required />
-
+            <img src={logo} alt="Logo" />
+            <form className="form" onSubmit={handleFormSubmit}>
+                <input type="text" name="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
                 <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange} required />
-
                 <div className="parrafos">
                     <p>Para garantizar la seguridad de tu cuenta, tu contraseña debe cumplir con los siguientes requisitos:</p>
                     <p>Debe contener al menos:</p>
                     <p> Una letra mayúscula, un carácter especial, un número y varias letras minúsculas </p>
                     <p>¡Gracias por tu cooperación en mantener tu cuenta segura!</p>
                 </div>
-
                 <input type="text" name="nombre" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-
-                <DatePicker /*Biblioteca para el calendario de la fecha \\npm install react-datepicker\\ */
+                <DatePicker
                     selected={fechaNacimiento}
                     onChange={(date) => setFechaNacimiento(date)}
                     placeholderText="Fecha de nacimiento"
@@ -116,16 +123,12 @@ export function PagRegistro({redirectToInicioSesion}) {
                     <p>Términos y Condiciones de SoundGood</p>
                     <p>Al registrarte en SoundGood, aceptas nuestros términos y condiciones. Por favor, asegúrate de revisarlos periódicamente, ya que pueden cambiar. Gracias por unirte a nuestra comunidad musical.</p>
                 </div>
-
-
-
-                <button onClick={redirectToInicioSesion}>Registrarse</button>
+                <button type="submit">Registrarse</button> 
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}
                 </div>
-
             </form>
         </div>
-    )
-} 
+    );
+}
