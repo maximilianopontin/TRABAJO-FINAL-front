@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+   "proxy": "https://drive.google.com/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,6 +13,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@madzadev/audio-player": "^2.1.13",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-datepicker": "^6.9.0",
