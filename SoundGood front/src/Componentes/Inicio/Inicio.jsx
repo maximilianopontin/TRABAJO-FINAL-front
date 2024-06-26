@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Reproductor from "../Reproductor musica/Reproductor";
 import { Nav } from "../Nav/Nav";
-import Footer from "../Footer/Footer";
 import { SongCard } from "./Card";
 import './card.css'
 
