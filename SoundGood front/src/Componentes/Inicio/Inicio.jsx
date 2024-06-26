@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Reproductor from "../Reproductor musica/Reproductor";
-import { Nav } from "../Nav/Nav";
 import { SongCard } from "./Card";
 import './card.css'
+import { Nav } from "../Nav/Nav";
 
 export function Inicio() {
     const [songs, setSongs] = useState([]);
@@ -31,7 +31,7 @@ export function Inicio() {
     return (
         <>
             <div>
-                <Nav />
+               <Nav/>
             </div>
             <p>Lista de canciones</p>
 
