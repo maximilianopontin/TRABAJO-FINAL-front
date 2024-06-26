@@ -49,10 +49,6 @@ export function Inicio() {
             <div>
                 <Reproductor/> 
             </div>
-
-            <div>
-                <Footer />
-            </div>
         </>
     )
 }

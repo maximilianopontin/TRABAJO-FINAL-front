@@ -10,7 +10,6 @@ import PlanPremium from './Componentes/Footer/PlanPremium';
 import VersionGratuita from './Componentes/Footer/VersionGratuita';
 import Ayudas from './Componentes/Footer/Ayudas';
 import { Nav } from './Componentes/Nav/Nav';
-
 import { Inicio } from './Componentes/Inicio/Inicio';
 
 
@@ -52,15 +51,11 @@ function App() {
     }
     return (
         <>
-
-
-            <Nav />
-
             <div>
-
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />} {/* Rediccionamineto de la pagina Inicio a Registro y Inico Sesion*/}
                 {count === 1 && <PagInicioSesion redirectToHome={redirectToHome} />} {/* Rediccionamineto de la pagina Inicio sesio a Home*/}
-                {count === 2 && <PagRegistro redirectToInicioSesion={redirectToInicioSesion} />} {/* Aquí importamos y usamos el componente PagRegistro */}
+                {count === 2 && <PagRegistro redirectToInicioSesion={redirectToInicioSesion} />}
+                {count === 3 && <Inicio/>} {/* Aquí importamos y usamos el componente PagRegistro */}
                 {count === 4 && <AcercaDe redirectToHome={redirectToHome} />}
                 {count === 5 && <PlanPremium redirectToHome={redirectToHome} />}
                 {count === 6 && <VersionGratuita redirectToHome={redirectToHome} />}
