@@ -11,6 +11,7 @@ export const Nav = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [songUrlReproductor, setSongUrlReproductor] = useState(null); // almacena la URL de la cancion seleccionada
 
+
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
             return;
@@ -23,38 +24,51 @@ export const Nav = () => {
                 );
                 setSearchResults(filteredResults);
                 setModalOpen(true);
-                setSearchTerm('');
+
             })
             .catch(error => console.error('Error al obtener datos:', error));
     };
-//el boton de buscar anda cuando apreto enter
+    //el boton de buscar anda cuando apreto enter
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
         }
     };
-    //Funcion que maneja la URL de la cancion cuando se selecciona
+    const handleSongSelec = (url) => {
+        //se actualiza cuando se selecciona una canción del modal
+        setSongUrlReproductor(url);
+        //se cierra para asegurarse de que el reproductor reciba la nueva URL de la canción.
+        setModalOpen(false); // Cierra el modal después de seleccionar una canción
+    };
+    /*Funcion que maneja la URL de la cancion cuando se selecciona
     const handleSongSelec = (url) => {
         setSongUrlReproductor(url);
+        const selectedTrack = searchResults.find(track => track.url === url);
+      // Verifica si la canción ya existe en la playlist antes de agregarla
+      const trackExists = playlist.some(track => track.url === url);
+      if (!trackExists) {
+          setPlaylist([selectedTrack, ...playlist]);
+      }
         setModalOpen(false);
-    }
+    };
+    */
 
     return (
         <nav>
             <div className="navbar">
                 <div className="nav-logo">
                     <a href="./Inicio/Inicio">
-                    <Logo />
-                    </a> 
-                    
+                        <Logo />
+                    </a>
+
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
                         placeholder="Buscar..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        onKeyDown={handleKeyDown} 
-                        />
+                        onKeyDown={handleKeyDown}
+                    />
 
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>
@@ -80,7 +94,7 @@ export const Nav = () => {
                     </div>
                 </div>
             )}
-         <ReproductorNav songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
+            <ReproductorNav songUrl={songUrlReproductor} /> {/* pasa la Url selecionada al reproductor*/}
         </nav>
     );
 };

@@ -47,13 +47,14 @@ function Reproductor({ songUrl}) {
 
   return (
     <div>
-    {tracks.length > 0 && currentTrack && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
+    { currentTrack && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
       <Canciones
-
-        trackList={[currentTrack]}//pasa la pista seleccionada al reproductor Anteriormente estaba "tracks"
+        key={currentTrack.url} //  asegurarnos de que el componente se remonte cuando la URL de la pista cambie. 
+          //Esto forzará una actualización completa del componente Canciones.
+        trackList= {[currentTrack]}//pasa la pista seleccionada al reproductor Anteriormente estaba "tracks"
         includeTags={false}
         includeSearch={false}
-        showPlaylist={false}
+        showPlaylist={true}
         sortTracks={true}
         autoPlayNextTrack={true}
         customColorScheme={colors} />
