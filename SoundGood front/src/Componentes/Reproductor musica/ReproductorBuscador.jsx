@@ -27,27 +27,36 @@ const colors = { // colores personalizados que se usarán para estilizar el comp
 };
 
 function Reproductor({ songUrl}) {
-  const [tracks, setTracks] = useState([]); //useState se utiliza para crear una variable de estado llamada tracks y una función setTracks para actualizar esta variable. Inicialmente, tracks es un array vacío.
+  const [Top50Tracks, setTop50Tracks] = useState([]); //useState se utiliza para crear una variable de estado llamada tracks y una función setTracks para actualizar esta variable. Inicialmente, tracks es un array vacío.
+  const [CancionesTracks, setCancionesTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null); //estado para la lista actual, la que se va a seccionar en el buscador
   
   useEffect(() => {
     fetch('/CancionesTop50.json')
       .then(response => response.json()) //convierte la respuesta en un objeto JavaScript.
-      .then(data => setTracks(data)) //actualiza la variable de estado tracks con los datos obtenidos.
+      .then(data => setTop50Tracks(data)) //actualiza la variable de estado tracks con los datos obtenidos.
       .catch(error => console.error('Error loading the tracks:', error));
+  }, []);
+
+  useEffect(() => {
+    fetch('/Canciones.json')
+      .then(response => response.json())
+      .then(data => setCancionesTracks(data))
+      .catch(error => console.error('Error loading the otra lista tracks:', error));
   }, []);
 
   //Actualizar la pista actual
   useEffect(() =>{
     if (songUrl) {
-      const selecTrack = tracks.find(track => track.url === songUrl);
+      const selecTrack = [...Top50Tracks, ...CancionesTracks].find(track => track.url === songUrl);
+      // ahora se busca la canción seleccionada dentro de la concatenación de ambas listas
       setCurrentTrack(selecTrack);
     }
-  }, [songUrl, tracks]);//Si songUrl está presente, busca la pista correspondiente en tracks y actualiza currentTrack con la pista seleccionada.
+  }, [songUrl, Top50Tracks,CancionesTracks]);//Si songUrl está presente, busca la pista correspondiente en tracks y actualiza currentTrack con la pista seleccionada.
 
   return (
     <div>
-    { currentTrack && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
+    { currentTrack && ( 
       <Canciones
         key={currentTrack.url} //  asegurarnos de que el componente se remonte cuando la URL de la pista cambie. 
           //Esto forzará una actualización completa del componente Canciones.

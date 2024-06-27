@@ -1,0 +1,52 @@
+[
+  {
+    "url": "./Musica/1.mp3",
+    "title": "Emanero, Karina, J mena, Angela Torres - SINVERGÜENZA",
+    "tags": ["Rap y hip-hop"]
+  },
+  {
+    "url": "./Musica/2.mp3",
+    "title": "Los Ángeles Azules, Emilia - Perdonarte ¿Para Qué?",
+    "tags": ["Urbano y pop latino"]
+  },
+  {
+    "url": "./Musica/3.mp3",
+    "title": "Luck Ra, Khea - HOLA PERDIDA",
+    "tags": ["Pop Urbano"]
+  },
+  {
+    "url": "./Musica/4.mp3",
+    "title": "Maria Becerra - CORAZÓN VACÍO",
+    "tags": ["Pop Urbano"]
+  },
+  {
+    "url": "./Musica/5.mp3",
+    "title": "Emanero, La Konga, Antonio Rios - ADICTO",
+    "tags": ["Rap"]
+  },
+  {
+    "url": "./Musica/6.mp3",
+    "title": "Tiago PZK, Ke Personajes - Piel",
+    "tags": ["Rap y Pop"]
+  },
+  {
+    "url": "./Musica/7.mp3",
+    "title": "Fer Vazquez, Flor Alvarez - Te Amo",
+    "tags": ["Pop Latino"]
+  },
+  {
+    "url": "./Musica/8.mp3",
+    "title": "Fer Vazquez, Flor Alvarez - Sin Querer",
+    "tags": ["Pop Latino"]
+  },
+  {
+    "url": "./Musica/9.mp3",
+    "title": "Bauti Mascia, Cele Arrabal - Ya no me duele",
+    "tags": ["Pop Urbano"]
+  },
+  {
+    "url": "./Musica/10.mp3",
+    "title": "TINI, BM, Big One - Lágrimas",
+    "tags": ["Pop"]
+  }
+]
