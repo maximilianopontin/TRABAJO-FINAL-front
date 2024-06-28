@@ -1,15 +1,29 @@
 import { Logo } from "../../logo/logo";
 import './Nav.css';
 import './modal.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
-
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
-    const [songUrlReproductor, setSongUrlReproductor] = useState(null); // almacena la URL de la cancion seleccionada
+    const [songUrlReproductor, setSongUrlReproductor] = useState(null);
+    const [playlist, setPlaylist] = useState([]);
+
+    useEffect(() => {
+        fetch('CancionesTop50.json')
+            .then(response => response.json())
+            .then(data => setPlaylist(data))
+            .catch(error => console.error('Error al obtener datos:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('/Canciones.json')
+            .then(response => response.json())
+            .then(data => setCancionesTracks(data))
+            .catch(error => console.error('Error loading the otra lista tracks:', error));
+    }, []);
 
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
@@ -23,39 +37,46 @@ export const Nav = () => {
                 );
                 setSearchResults(filteredResults);
                 setModalOpen(true);
-                setSearchTerm('');
+            })
+            .catch(error => console.error('Error al obtener datos:', error));
+        fetch('Canciones.json')
+            .then(response => response.json())
+            .then(data => {
+                const filteredResults = data.filter(song =>
+                    song.title.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                setSearchResults(filteredResults);
+                setModalOpen(true);
             })
             .catch(error => console.error('Error al obtener datos:', error));
     };
-//el boton de buscar anda cuando apreto enter
+
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
         }
     };
-    //Funcion que maneja la URL de la cancion cuando se selecciona
+
     const handleSongSelec = (url) => {
         setSongUrlReproductor(url);
         setModalOpen(false);
-    }
+    };
 
     return (
         <nav>
             <div className="navbar">
                 <div className="nav-logo">
                     <a href="./Inicio/Inicio">
-                    <Logo />
-                    </a> 
-                    
+                        <Logo />
+                    </a>
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
                         placeholder="Buscar..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        onKeyDown={handleKeyDown} 
-                        />
-
+                        onKeyDown={handleKeyDown}
+                    />
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>
                 <div className="nav-links">
@@ -69,10 +90,10 @@ export const Nav = () => {
                         <div className="modal-content">
                             <span className="close" onClick={() => setModalOpen(false)}>×</span>
                             <h2>Canciones encontradas:</h2>
-                            <ul> {/* renderiza la busqueda mediante el click de buscar*/}
+                            <ul>
                                 {searchResults.map((song, index) => (
                                     <li key={index}>
-                                        <a href={"#"} onClick={() => handleSongSelec(song.url)}>{song.title}</a>
+                                        <a href="#" onClick={() => handleSongSelec(song.url)}>{song.title}</a>
                                     </li>
                                 ))}
                             </ul>
@@ -80,7 +101,7 @@ export const Nav = () => {
                     </div>
                 </div>
             )}
-         <ReproductorNav songUrl={songUrlReproductor}/> {/* pasa la Url selecionada al reproductor*/}
+            <ReproductorNav songUrl={songUrlReproductor} playlist={playlist} />
         </nav>
     );
 };
