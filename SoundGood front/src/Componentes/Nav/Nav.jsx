@@ -18,11 +18,28 @@ export const Nav = () => {
             .catch(error => console.error('Error al obtener datos:', error));
     }, []);
 
+    useEffect(() => {
+        fetch('/Canciones.json')
+            .then(response => response.json())
+            .then(data => setCancionesTracks(data))
+            .catch(error => console.error('Error loading the otra lista tracks:', error));
+    }, []);
+
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
             return;
         }
         fetch('CancionesTop50.json')
+            .then(response => response.json())
+            .then(data => {
+                const filteredResults = data.filter(song =>
+                    song.title.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                setSearchResults(filteredResults);
+                setModalOpen(true);
+            })
+            .catch(error => console.error('Error al obtener datos:', error));
+        fetch('Canciones.json')
             .then(response => response.json())
             .then(data => {
                 const filteredResults = data.filter(song =>
@@ -51,14 +68,14 @@ export const Nav = () => {
                 <div className="nav-logo">
                     <a href="./Inicio/Inicio">
                         <Logo />
-                    </a> 
+                    </a>
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
                         placeholder="Buscar..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        onKeyDown={handleKeyDown} 
+                        onKeyDown={handleKeyDown}
                     />
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>

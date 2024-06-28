@@ -63,7 +63,7 @@ function Reproductor({ songUrl}) {
         trackList= {[currentTrack]}//pasa la pista seleccionada al reproductor Anteriormente estaba "tracks"
         includeTags={false}
         includeSearch={false}
-        showPlaylist={true}
+        showPlaylist={false}
         sortTracks={true}
         autoPlayNextTrack={true}
         customColorScheme={colors} />
