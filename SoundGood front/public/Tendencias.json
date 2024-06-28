@@ -1,0 +1,23 @@
+[
+    {
+        "url": "./Musica/1.mp3",
+        "title": "Emanero, Karina, J mena, Angela Torres - SINVERGÜENZA",
+        "tags": [
+            "Rap y hip-hop"
+        ]
+    },
+    {
+        "url": "./Musica/2.mp3",
+        "title": "Los Ángeles Azules, Emilia - Perdonarte ¿Para Qué?",
+        "tags": [
+            "Urbano y pop latino"
+        ]
+    },
+    {
+        "url": "./Musica/3.mp3",
+        "title": "Luck Ra, Khea - HOLA PERDIDA",
+        "tags": [
+            "Pop Urbano"
+        ]
+    }
+]
