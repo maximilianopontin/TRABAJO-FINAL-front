@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Reproductor from "../Reproductor musica/Reproductor";
 import { SongCard } from "./Card";
 import './card.css'
 import { Nav } from "../Nav/Nav";
@@ -52,14 +51,27 @@ export function Inicio() {
             <div>
                 <Nav />
             </div>
-            <p>Lista de canciones</p>
+            <p>Top 50</p>
 
             <div className="song-list">
                 {songsTop50.map((song, index) => (
                     <SongCard
                         key={index}
+                        url={song.url}
                         title={song.title}
                         tags={song.tags}
+                    />
+                ))}
+            </div>
+            <p>Tendencias</p>
+
+            <div className="song-list">
+                {songsTendencias.map((song, index) => (
+                    <SongCard
+                        key={index}
+                        title={song.title}
+                        tags={song.tags}
+                        url={song.url} // Usar la propiedad url
                     />
                 ))}
             </div>

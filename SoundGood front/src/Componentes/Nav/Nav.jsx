@@ -9,12 +9,14 @@ export const Nav = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
     const [songUrlReproductor, setSongUrlReproductor] = useState(null);
-    const [playlist, setPlaylist] = useState([]);
+    //const [playlist, setPlaylist] = useState([]);
+    const [top50Tracks, setTop50Tracks] = useState([]);
+    const [cancionesTracks, setCancionesTracks] = useState([]);
 
     useEffect(() => {
-        fetch('CancionesTop50.json')
+        fetch('/CancionesTop50.json')
             .then(response => response.json())
-            .then(data => setPlaylist(data))
+            .then(data => setTop50Tracks(data))
             .catch(error => console.error('Error al obtener datos:', error));
     }, []);
 
@@ -28,7 +30,7 @@ export const Nav = () => {
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
             return;
-        }
+        }/*
         fetch('CancionesTop50.json')
             .then(response => response.json())
             .then(data => {
@@ -50,7 +52,18 @@ export const Nav = () => {
             })
             .catch(error => console.error('Error al obtener datos:', error));
     };
-
+*/
+        const filteredResults = [
+            ...top50Tracks.filter(song =>
+                song.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ),
+            ...cancionesTracks.filter(song =>
+                song.title.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        ];
+        setSearchResults(filteredResults);
+        setModalOpen(true);
+    };
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
@@ -101,7 +114,7 @@ export const Nav = () => {
                     </div>
                 </div>
             )}
-            <ReproductorNav songUrl={songUrlReproductor} playlist={playlist} />
+            <ReproductorNav songUrl={songUrlReproductor}  />
         </nav>
     );
 };
