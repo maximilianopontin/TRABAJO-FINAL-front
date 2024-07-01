@@ -1,11 +1,16 @@
+/* Estilos para las tarjetas de canciones */
 .song-card {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
-    margin: 8px;
+    margin: 10px;
     text-align: center;
     background-color: #f9f9f9;
     transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos se distribuyan uniformemente */
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
 }
 
 .song-card:hover {
@@ -15,8 +20,9 @@
 
 .song-card h3 {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.2em; /* Ajusta el tamaño de la fuente */
     color: #333;
+    font-family: inherit;
 }
 
 .song-card p {
@@ -24,6 +30,8 @@
     color: #666;
     font-size: 0.9em;
 }
+
+/* Estilos para la lista de tarjetas */
 .song-list {
     display: flex;
     flex-wrap: wrap;
@@ -50,4 +58,13 @@
         flex: 1 1 100%; /* Una tarjeta por fila en pantallas pequeñas */
         max-width: 100%;
     }
+}
+
+/* Estilos para los títulos de secciones */
+.section-title {
+    font-size: 2em; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    color: #5fa25b; /* Color del texto */
+    text-align: center; /* Centrado */
+    margin: 24px 0; /* Espaciado superior e inferior */
 }

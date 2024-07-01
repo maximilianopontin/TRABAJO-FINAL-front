@@ -30,29 +30,7 @@ export const Nav = () => {
     const handleSearch = () => {
         if (searchTerm.trim() === '') {
             return;
-        }/*
-        fetch('CancionesTop50.json')
-            .then(response => response.json())
-            .then(data => {
-                const filteredResults = data.filter(song =>
-                    song.title.toLowerCase().includes(searchTerm.toLowerCase())
-                );
-                setSearchResults(filteredResults);
-                setModalOpen(true);
-            })
-            .catch(error => console.error('Error al obtener datos:', error));
-        fetch('Canciones.json')
-            .then(response => response.json())
-            .then(data => {
-                const filteredResults = data.filter(song =>
-                    song.title.toLowerCase().includes(searchTerm.toLowerCase())
-                );
-                setSearchResults(filteredResults);
-                setModalOpen(true);
-            })
-            .catch(error => console.error('Error al obtener datos:', error));
-    };
-*/
+        }
         const filteredResults = [
             ...top50Tracks.filter(song =>
                 song.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -114,7 +92,7 @@ export const Nav = () => {
                     </div>
                 </div>
             )}
-            <ReproductorNav songUrl={songUrlReproductor}  />
+            <ReproductorNav songUrl={songUrlReproductor} />
         </nav>
     );
 };

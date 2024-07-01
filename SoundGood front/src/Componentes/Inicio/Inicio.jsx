@@ -1,81 +1,105 @@
 import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
 import { SongCard } from "./Card";
 import './card.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Nav } from "../Nav/Nav";
+import Reproductor from '../Reproductor musica/ReproductorBuscador';
 
 export function Inicio() {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
+    const [selectedSongUrl, setSelectedSongUrl] = useState(null);
+
     useEffect(() => {
-        // Realiza una solicitud fetch para obtener el archivo JSON de CancionesTop50.json
         fetch('/CancionesTop50.json')
             .then(response => {
-                // Verifica si la respuesta de la red es exitosa
                 if (!response.ok) {
                     throw new Error('La respuesta de la red no fue exitosa');
                 }
-                // Convierte la respuesta a formato JSON
                 return response.json();
             })
             .then(data => {
-                // Establece los datos obtenidos del JSON como el estado de canciones (songs)
                 setSongsTop50(data);
             })
             .catch(error => {
-                // Maneja cualquier error ocurrido durante la carga de las canciones
                 console.error('Error cargando las canciones:', error);
             });
     }, []);
+
     useEffect(() => {
-        // Realiza una solicitud fetch para obtener el archivo JSON de CancionesTop50.json
         fetch('/Tendencias.json')
             .then(response => {
-                // Verifica si la respuesta de la red es exitosa
                 if (!response.ok) {
                     throw new Error('La respuesta de la red no fue exitosa');
                 }
-                // Convierte la respuesta a formato JSON
                 return response.json();
             })
             .then(data => {
-                // Establece los datos obtenidos del JSON como el estado de canciones (songs)
                 setSongsTendencias(data);
             })
             .catch(error => {
-                // Maneja cualquier error ocurrido durante la carga de las canciones
                 console.error('Error cargando las canciones:', error);
             });
     }, []);
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
     return (
         <>
             <div>
                 <Nav />
             </div>
-            <p>Top 50</p>
-
-            <div className="song-list">
+            <p className="section-title">Top 50</p>
+            <Slider {...settings}>
                 {songsTop50.map((song, index) => (
                     <SongCard
                         key={index}
-                        url={song.url}
                         title={song.title}
-                        tags={song.tags}
+                        tags={song.tags} 
+                        url={song.url}
+                        onClick={() => setSelectedSongUrl(song.url)}
                     />
                 ))}
-            </div>
-            <p>Tendencias</p>
-
-            <div className="song-list">
+            </Slider>
+            <p className="section-title">Tendencias</p>
+            <Slider {...settings}>
                 {songsTendencias.map((song, index) => (
                     <SongCard
                         key={index}
                         title={song.title}
-                        tags={song.tags}
-                        url={song.url} // Usar la propiedad url
+                        tags={song.tags} 
+                        url={song.url}
+                        onClick={() => setSelectedSongUrl(song.url)}
                     />
                 ))}
-            </div>
-
+            </Slider>
+            {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
         </>
     )
 }
