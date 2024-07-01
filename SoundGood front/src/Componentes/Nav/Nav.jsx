@@ -63,7 +63,7 @@ export const Nav = () => {
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
-                        placeholder="Buscar..."
+                        placeholder="Qué quéres escuchar hoy?..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
                         onKeyDown={handleKeyDown}
