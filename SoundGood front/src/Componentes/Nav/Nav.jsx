@@ -3,6 +3,7 @@ import './Nav.css';
 import './modal.css';
 import { useState, useEffect } from "react";
 import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
+import { Link } from "react-router-dom";
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -57,9 +58,10 @@ export const Nav = () => {
         <nav>
             <div className="navbar">
                 <div className="nav-logo">
-                    <a href="./Inicio/Inicio">
+                
                         <Logo />
-                    </a>
+                   
+                    
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
