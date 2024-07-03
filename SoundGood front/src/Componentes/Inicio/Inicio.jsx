@@ -6,8 +6,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Nav } from "../Nav/Nav";
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
+import Footer from "../Footer/Footer";
 
-export function Inicio() {
+export function Inicio({redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
@@ -100,6 +101,12 @@ export function Inicio() {
                 ))}
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
+<Footer redirectToAcercaDe={redirectToAcercaDe}
+                    redirectToPlanPremium={redirectToPlanPremium}
+                    redirectToVersionGratuita={redirectToVersionGratuita}
+                    redirectToAyudas={redirectToAyudas}
+                />{/* Renderiza el componente del footer con las funciones de redirección */}
+
         </>
     )
 }

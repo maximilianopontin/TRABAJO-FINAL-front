@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from '../../logo/logo.png';
 import "./InicioSesion.css";
 
+
 export function PagInicioSesion({ redirectToHome }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -74,6 +75,7 @@ export function PagInicioSesion({ redirectToHome }) {
                     {errorMessage ? errorMessage : ""}
                 </div>
             </form>
+            
         </div>
     );
 }
