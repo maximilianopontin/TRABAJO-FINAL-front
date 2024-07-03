@@ -1,4 +1,25 @@
-.parrafos{
+.parrafos {
     color: white;
     margin-bottom: 8px;
 }
+
+.date-picker {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+/* Asegura que los contenedores de los menús desplegables no se superpongan */
+.react-datepicker__month-dropdown-container,
+.react-datepicker__year-dropdown-container {
+    display: inline-block;
+    position: relative;
+    z-index: 9999;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+
+
+
+

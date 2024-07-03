@@ -118,12 +118,24 @@ export function PagRegistro({ redirectToInicioSesion }) {
                     placeholderText="Fecha de nacimiento"
                     dateFormat="dd/MM/yyyy"
                     className="date-picker"
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    popperPlacement="bottom-start" // Ajuste para la posición del popper
+                    popperModifiers={{
+                        preventOverflow: {
+                            enabled: true,
+                            boundariesElement: 'viewport'
+                        }
+                    }}
                 />
+
+
                 <div className="parrafos">
                     <p>Términos y Condiciones de SoundGood</p>
                     <p>Al registrarte en SoundGood, aceptas nuestros términos y condiciones. Por favor, asegúrate de revisarlos periódicamente, ya que pueden cambiar. Gracias por unirte a nuestra comunidad musical.</p>
                 </div>
-                <button type="submit">Registrarse</button> 
+                <button type="submit">Registrarse</button>
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}
