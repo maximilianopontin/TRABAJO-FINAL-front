@@ -9,11 +9,12 @@ import PlanPremium from './Componentes/Footer/PlanPremium';
 import VersionGratuita from './Componentes/Footer/VersionGratuita';
 import Ayudas from './Componentes/Footer/Ayudas';
 import { Inicio } from './Componentes/Inicio/Inicio';
-
-
+import { Biblioteca } from './Componentes/Biblioteca/Biblioteca';
+import { Nav } from './Componentes/Nav/Nav';
 
 function App() {
     const [count, setCount] = useState(0);
+
 
     const redirectToInicioSesion = () => {
         setCount(1);
@@ -47,8 +48,21 @@ function App() {
     const redirectToAyudas = () => {
         setCount(7);
     }
+    const redirectBiblioteca = () => {
+        setCount(8)
+    }
+    const redirectNav = () => {
+        setCount(9)
+    }
     return (
         <>
+            <div>
+                <Biblioteca
+                    redirectToAcercaDe={redirectToAcercaDe}
+                    redirectToPlanPremium={redirectToPlanPremium}
+                    redirectToVersionGratuita={redirectToVersionGratuita}
+                    redirectToAyudas={redirectToAyudas} />
+            </div>
             <div>
                 {count === 0 && <PagInicio redirectToInicioSesion={redirectToInicioSesion} redirectToRegistro={redirectToRegistro} />} {/* Rediccionamineto de la pagina Inicio a Registro y Inico Sesion*/}
                 {count === 1 && <PagInicioSesion redirectToHome={redirectToHome} />} {/* Redireccionamineto de la pagina Inicio sesio a Home*/}
@@ -62,6 +76,12 @@ function App() {
                 {count === 5 && <PlanPremium redirectToHome={redirectToHome} />}
                 {count === 6 && <VersionGratuita redirectToHome={redirectToHome} />}
                 {count === 7 && <Ayudas redirectToHome={redirectToHome} />}
+                {count === 8 && (<Biblioteca
+                    redirectToAcercaDe={redirectToAcercaDe}
+                    redirectToPlanPremium={redirectToPlanPremium}
+                    redirectToVersionGratuita={redirectToVersionGratuita}
+                    redirectToAyudas={redirectToAyudas} />)} {/* Redireccionamiento del footer en Biblioteca */}
+                {count === 9 && <Nav redirectBiblioteca={redirectBiblioteca} />}
             </div>
         </>
     );

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Nav } from '../Nav/Nav'
 import Slider from "react-slick";
-import { SongCard } from "./Card";
-import './card.css'
+import { SongCard } from "../Inicio/Card";
+import '../Inicio/card.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Nav } from "../Nav/Nav";
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
-import Footer from "../Footer/Footer";
+import Footer from '../Footer/Footer'
 
-export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
+export function Biblioteca({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
@@ -45,7 +45,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             });
     }, []);
 
-     const settings = {
+    const settings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -70,13 +70,12 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             }
         ]
     };
-
     return (
         <>
             <div>
                 <Nav />
             </div>
-            <p className="section-title">Top 50</p>
+            <p className="section-title">Lo más escuchado</p>
             <Slider {...settings}>
                 {songsTop50.map((song, index) => (
                     <SongCard
@@ -88,7 +87,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                     />
                 ))}
             </Slider>
-            <p className="section-title">Tendencias</p>
+            <p className="section-title">Guardadas</p>
             <Slider {...settings}>
                 {songsTendencias.map((song, index) => (
                     <SongCard
@@ -101,12 +100,12 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 ))}
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
-            <Footer redirectToAcercaDe={redirectToAcercaDe}
+            <Footer
+                redirectToAcercaDe={redirectToAcercaDe}
                 redirectToPlanPremium={redirectToPlanPremium}
                 redirectToVersionGratuita={redirectToVersionGratuita}
                 redirectToAyudas={redirectToAyudas}
-            />{/* Renderiza el componente del footer con las funciones de redirección */}
-
+            />
         </>
-    )
+    );
 }
