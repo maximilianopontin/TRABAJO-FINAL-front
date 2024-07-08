@@ -58,10 +58,9 @@ export const Nav = () => {
         <nav>
             <div className="navbar">
                 <div className="nav-logo">
-                
+                    <Link to="/home">
                         <Logo />
-                   
-                    
+                    </Link>
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
@@ -73,8 +72,8 @@ export const Nav = () => {
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>
                 <div className="nav-links">
-                    <a href="">Biblioteca</a>
-                    <a href="">Cuenta</a>
+                    <Link to="/biblioteca">Biblioteca</Link>
+                    <Link to="">Cuenta</Link>
                 </div>
             </div>
             {isModalOpen && (

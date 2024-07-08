@@ -1,9 +1,10 @@
 import React from 'react';
 import './Links.css';
-function AcercaDe({ redirectToHome }) {
+import { Link } from 'react-router-dom';
+function AcercaDe() {
     return (
         <div className='container-link'>
-           <h1>Acerca de nosotros</h1>
+            <h1>Acerca de nosotros</h1>
             <h2>SOUNGOOD es un servicio de música digital y podcasts que te brinda acceso a millones de canciones de artistas de todo el mundo.</h2>
             <p>
                 Puedes utilizar las funciones básicas, como reproducir música gratis, pero también puedes suscribirte a Soundgood Premium.
@@ -31,7 +32,9 @@ function AcercaDe({ redirectToHome }) {
             <p>
                 Soundgood ARG. Brinda el servicio a los usuarios en todos los mercados.
             </p>
-            <button onClick={redirectToHome}className="green-button">Volver a Inicio</button>
+            <Link to="/home">
+                <button className="green-button">Volver a Inicio</button>
+            </Link>
         </div>
     );
 }

@@ -8,7 +8,7 @@ import { Nav } from "../Nav/Nav";
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from "../Footer/Footer";
 
-export function Inicio({redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
+export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
@@ -45,7 +45,7 @@ export function Inicio({redirectToAcercaDe, redirectToPlanPremium, redirectToVer
             });
     }, []);
 
-    const settings = {
+     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -82,7 +82,7 @@ export function Inicio({redirectToAcercaDe, redirectToPlanPremium, redirectToVer
                     <SongCard
                         key={index}
                         title={song.title}
-                        tags={song.tags} 
+                        tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
                     />
@@ -94,18 +94,18 @@ export function Inicio({redirectToAcercaDe, redirectToPlanPremium, redirectToVer
                     <SongCard
                         key={index}
                         title={song.title}
-                        tags={song.tags} 
+                        tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
                     />
                 ))}
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
-<Footer redirectToAcercaDe={redirectToAcercaDe}
-                    redirectToPlanPremium={redirectToPlanPremium}
-                    redirectToVersionGratuita={redirectToVersionGratuita}
-                    redirectToAyudas={redirectToAyudas}
-                />{/* Renderiza el componente del footer con las funciones de redirección */}
+            <Footer redirectToAcercaDe={redirectToAcercaDe}
+                redirectToPlanPremium={redirectToPlanPremium}
+                redirectToVersionGratuita={redirectToVersionGratuita}
+                redirectToAyudas={redirectToAyudas}
+            />{/* Renderiza el componente del footer con las funciones de redirección */}
 
         </>
     )

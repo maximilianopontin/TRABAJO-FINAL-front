@@ -1,7 +1,8 @@
 import React from 'react';
 import './Links.css';
+import { Link } from 'react-router-dom';
 
-function VersionGratuita({ redirectToHome }) {
+function VersionGratuita() {
     return (
         <div className='container-link'>
             <h1>Versión Gratuita!!!</h1>
@@ -14,7 +15,9 @@ function VersionGratuita({ redirectToHome }) {
                 <li>Contanos qué te gusta y te vamos a recomendar música para vos.</li>
                 <li>Activá el Ahorro de datos desde Configuración y consumí menos datos cuando escuches tu música.</li>
             </ul>
-            <button onClick={redirectToHome}  className="green-button">Volver a Inicio</button>
+            <Link to="/home">
+                <button className="green-button">Volver a Inicio</button>
+            </Link>
         </div>
     );
 }
