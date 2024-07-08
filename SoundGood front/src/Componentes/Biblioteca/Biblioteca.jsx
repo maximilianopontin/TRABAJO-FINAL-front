@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import {Nav} from '../Nav/Nav'
-
-export function Biblioteca () {
-    return (
-        <>
-        <div>
-            <Nav/> 
-        </div>
-        
-        </>
-
-=======
 import React, { useState, useEffect } from "react";
 import { Nav } from '../Nav/Nav'
 import Slider from "react-slick";
@@ -121,6 +107,5 @@ export function Biblioteca({ redirectToAcercaDe, redirectToPlanPremium, redirect
                 redirectToAyudas={redirectToAyudas}
             />
         </>
->>>>>>> Biblioteca
     );
 }
