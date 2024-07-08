@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import logo from '../../logo/logo.png';
 import "./InicioSesion.css";
+import {  useNavigate } from "react-router-dom";
 
-
-export function PagInicioSesion({ redirectToHome }) {
+export function PagInicioSesion() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+
+    const navigate = useNavigate();
 
     // Validamos que la contraseña cumpla con las condiciones dadas.
     const handleFormSubmit = (e) => {
@@ -24,7 +26,7 @@ export function PagInicioSesion({ redirectToHome }) {
 
         // Si todas las validaciones son exitosas, limpiamos el formulario y redirigimos a Home
         clearForm();
-        redirectToHome(); /* El botón envía el formulario */
+        navigate("/home")
     }
 
     // Validamos si la contraseña está bien o mal

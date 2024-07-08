@@ -1,9 +1,10 @@
 import React from 'react';
 import './Links.css';
-function Ayudas({ redirectToHome }) {
+import { Link } from 'react-router-dom';
+function Ayudas() {
     return (
         <div className='container-link'>
-           <h1>¿Cómo te podemos ayudar?</h1>
+            <h1>¿Cómo te podemos ayudar?</h1>
             <h2>Actualizaciones de precios</h2>
             <p>
                 A medida que seguimos ampliando nuestra plataforma, actualizamos los precios de Premium para poder seguir innovando en las cambiantes condiciones del mercado. Estas actualizaciones nos ayudarán a seguir entregando valor a los fans.
@@ -75,8 +76,10 @@ function Ayudas({ redirectToHome }) {
                 <li>Desplázate hasta abajo.</li>
                 <li>Selecciona Cerrar sesión.</li>
             </ol>
+            <Link to="/home">
+                <button className="green-button">Volver a Inicio</button>
+            </Link>
 
-            <button onClick={redirectToHome} className="green-button">Volver a Inicio</button>
         </div>
     );
 }

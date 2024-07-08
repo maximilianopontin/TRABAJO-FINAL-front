@@ -3,13 +3,17 @@ import logo from '../../logo/logo.png';
 import './Registro.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link, useNavigate } from "react-router-dom";
 
-export function PagRegistro({ redirectToInicioSesion }) {
+export function PagRegistro() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [nombre, setNombre] = useState('');
     const [fechaNacimiento, setFechaNacimiento] = useState(null);
+
+    const navigate = useNavigate();
+
 
     // Validamos que la contraseña y email cumpla con las condiciones dadas.
     const handleFormSubmit = (e) => {
@@ -52,7 +56,8 @@ export function PagRegistro({ redirectToInicioSesion }) {
         // Puedes agregar aquí la lógica para almacenar el userData en localStorage o enviarlo a un servidor
 
         clearForm(); // Si el formulario se envía correctamente, este se limpia
-        redirectToInicioSesion() /* Redireccion a Inicio sesio*/
+        
+        navigate("/inicio-sesion");
     }
 
     // Validación para el email

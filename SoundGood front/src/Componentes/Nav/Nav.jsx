@@ -3,9 +3,9 @@ import './Nav.css';
 import './modal.css';
 import { useState, useEffect } from "react";
 import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
-import { Biblioteca } from "../Biblioteca/Biblioteca";
+import { Link } from "react-router-dom";
 
-export const Nav = ({redirectBiblioteca}) => {
+export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
@@ -57,8 +57,10 @@ export const Nav = ({redirectBiblioteca}) => {
     return (
         <nav>
             <div className="navbar">
-                <div className="nav-logo">                
-                        <Logo />                    
+                <div className="nav-logo">
+                    <Link to="/home">
+                        <Logo />
+                    </Link>
                 </div>
                 <div className="nav-buscador">
                     <input type="text"
@@ -70,8 +72,8 @@ export const Nav = ({redirectBiblioteca}) => {
                     <button type="button" onClick={handleSearch}>Buscar</button>
                 </div>
                 <div className="nav-links">
-                <a href="" onClick={redirectBiblioteca}>Biblioteca</a>
-                <a href="#">Cuenta</a>
+                    <Link to="/biblioteca">Biblioteca</Link>
+                    <Link to="">Cuenta</Link>
                 </div>
             </div>
             {isModalOpen && (
