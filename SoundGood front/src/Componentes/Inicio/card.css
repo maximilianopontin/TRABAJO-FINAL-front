@@ -9,11 +9,12 @@
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Asegura que los elementos se distribuyan uniformemente */
+    justify-content: space-between;
     min-width: 250px;
-    min-height: 150px;
-    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+    min-height: 190px; /* Ajusta la altura mínima para asegurar tamaños uniformes */
+    box-sizing: border-box;
 }
+
 .song-card:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,15 +22,46 @@
 
 .song-card h3 {
     margin: 0;
-    font-size: 1.2em; /* Ajusta el tamaño de la fuente */
+    font-size: 1.2em;
     color: #333;
     font-family: inherit;
 }
 
 .song-card p {
-    margin: 0.5em 0 0 0;
+    margin: 0.5em 0;
     color: #666;
     font-size: 0.9em;
+}
+
+/* Contenedor para los botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilos para los botones */
+.favorite-button, .add-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.favorite-button {
+    color: red;
+}
+
+.favorite-button:hover {
+    color: darkred;
+}
+
+.add-button {
+    color: green;
+}
+
+.add-button:hover {
+    color: darkgreen;
 }
 
 /* Estilos para la lista de tarjetas */
@@ -37,35 +69,35 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px; /* Espacio entre las tarjetas */
-    padding: 16px; /* Espacio alrededor de la lista */
+    gap: 16px;
+    padding: 16px;
 }
 
 .song-list div {
-    flex: 1 1 calc(33.333% - 32px); /* Tres tarjetas por fila */
+    flex: 1 1 calc(33.333% - 32px);
     max-width: calc(33.333% - 32px);
-    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
     .song-list div {
-        flex: 1 1 calc(50% - 16px); /* Dos tarjetas por fila en pantallas más pequeñas */
+        flex: 1 1 calc(50% - 16px);
         max-width: calc(50% - 16px);
     }
 }
 
 @media (max-width: 480px) {
     .song-list div {
-        flex: 1 1 100%; /* Una tarjeta por fila en pantallas pequeñas */
+        flex: 1 1 100%;
         max-width: 100%;
     }
 }
 
 /* Estilos para los títulos de secciones */
 .section-title {
-    font-size: 2em; /* Tamaño de la fuente */
-    font-weight: bold; /* Negrita */
-    color: #5fa25b; /* Color del texto */
-    text-align: center; /* Centrado */
-    margin: 24px 0; /* Espaciado superior e inferior */
+    font-size: 2em;
+    font-weight: bold;
+    color: #5fa25b;
+    text-align: center;
+    margin: 24px 0;
 }
