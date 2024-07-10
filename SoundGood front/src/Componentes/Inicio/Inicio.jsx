@@ -76,7 +76,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             <div>
                 <Nav />
             </div>
-            <p className="section-title">Top 50</p>
+            <p className="section-title">Top 10</p>
             <Slider {...settings}>
                 {songsTop50.map((song, index) => (
                     <SongCard
@@ -99,6 +99,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                         onClick={() => setSelectedSongUrl(song.url)}
                     />
                 ))}
+                
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
             <Footer redirectToAcercaDe={redirectToAcercaDe}

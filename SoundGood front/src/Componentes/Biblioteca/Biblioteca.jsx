@@ -75,19 +75,7 @@ export function Biblioteca({ redirectToAcercaDe, redirectToPlanPremium, redirect
             <div>
                 <Nav />
             </div>
-            <p className="section-title">Lo más escuchado</p>
-            <Slider {...settings}>
-                {songsTop50.map((song, index) => (
-                    <SongCard
-                        key={index}
-                        title={song.title}
-                        tags={song.tags}
-                        url={song.url}
-                        onClick={() => setSelectedSongUrl(song.url)}
-                    />
-                ))}
-            </Slider>
-            <p className="section-title">Guardadas</p>
+            <p className="section-title">Tus favoritos</p>
             <Slider {...settings}>
                 {songsTendencias.map((song, index) => (
                     <SongCard
@@ -98,7 +86,9 @@ export function Biblioteca({ redirectToAcercaDe, redirectToPlanPremium, redirect
                         onClick={() => setSelectedSongUrl(song.url)}
                     />
                 ))}
-            </Slider>
+            </Slider>    
+            <p className="section-title">Playlist</p>
+            
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
             <Footer
                 redirectToAcercaDe={redirectToAcercaDe}
