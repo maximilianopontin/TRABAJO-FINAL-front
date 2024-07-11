@@ -65,7 +65,7 @@ function EditaPerfil() {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Nombre:</label>
-                        <input
+                        <input className='input-editar-Perfil'
                             type="text"
                             name="nombre"
                             value={cliente.nombre}
@@ -74,7 +74,7 @@ function EditaPerfil() {
                     </div>
                     <div>
                         <label>Email:</label>
-                        <input
+                        <input className='input-editar-Perfil'
                             type="email"
                             name="email"
                             value={cliente.email}
@@ -83,7 +83,7 @@ function EditaPerfil() {
                     </div>
                     <div>
                         <label>Contraseña:</label>
-                        <input
+                        <input className='input-editar-Perfil'
                             type="password"
                             name="contraseña"
                             value={cliente.contraseña}
@@ -92,14 +92,13 @@ function EditaPerfil() {
                     </div>
                     <div>
                         <label>Fecha de Nacimiento:</label>
-                        <input
+                        <input className='input-editar-Perfil'
                             type="date"
                             name="fechaDeNacimiento"
                             value={cliente.fechaDeNacimiento}
                             onChange={handleChange}
                         />
                     </div>
-
                     <button className="btn" type="submit">Guardar Cambios</button>
                 </form>
                 {mensajeGuardado && <p className="mensaje-guardado">Sus cambios han sido guardados</p>}
