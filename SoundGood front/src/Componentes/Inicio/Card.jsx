@@ -1,7 +1,7 @@
 import React from 'react';
 import './card.css';
 
-export function SongCard({ url, title, tags, onClick, onFavorite, onAddToPlaylist }) {
+export function SongCard({ title, tags, url, onClick, onFavorite, onAddToPlaylist }) {
     return (
         <div className="song-card" onClick={onClick}>
             <h3>{title}</h3>
@@ -10,8 +10,8 @@ export function SongCard({ url, title, tags, onClick, onFavorite, onAddToPlaylis
                 <button 
                     className="favorite-button" 
                     onClick={(e) => {
-                        e.stopPropagation();
-                        onFavorite();
+                        e.stopPropagation();  // Evita que el clic se propague al contenedor padre
+                        onFavorite();  // Llama a la función onFavorite pasada como prop
                     }}
                 >
                     ❤️
@@ -19,8 +19,8 @@ export function SongCard({ url, title, tags, onClick, onFavorite, onAddToPlaylis
                 <button 
                     className="add-button" 
                     onClick={(e) => {
-                        e.stopPropagation();
-                        onAddToPlaylist();
+                        e.stopPropagation();  // Evita que el clic se propague al contenedor padre
+                        onAddToPlaylist();  // Llama a la función onAddToPlaylist pasada como prop
                     }}
                 >
                     +
