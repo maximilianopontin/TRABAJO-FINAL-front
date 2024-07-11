@@ -8,7 +8,7 @@
   }
   label {
     margin-bottom: 8px;
-    color: #000;
+    color: #ffffff;
   }
   form {
     display: flex;
@@ -19,12 +19,8 @@
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="date"] {
     width: 100%;
   }
+
 
   
