@@ -1,3 +1,72 @@
-{
-    "clientes": []
-}
+[
+  {
+    "id": 1,
+    "nombre": "Juan Pérez",
+    "email": "juan.perez@example.com",
+    "contraseña": "password123",
+    "fechaDeNacimiento": "1980-01-15"
+  },
+  {
+    "id": 2,
+    "nombre": "María García",
+    "email": "maria.garcia@example.com",
+    "contraseña": "securePass456",
+    "fechaDeNacimiento": "1992-05-23"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos Hernández",
+    "email": "carlos.hernandez@example.com",
+    "contraseña": "mySecret789",
+    "fechaDeNacimiento": "1985-11-30"
+  },
+  {
+    "id": 4,
+    "nombre": "Ana López",
+    "email": "ana.lopez@example.com",
+    "contraseña": "password321",
+    "fechaDeNacimiento": "1990-07-19"
+  },
+  {
+    "id": 5,
+    "nombre": "Luis Martínez",
+    "email": "luis.martinez@example.com",
+    "contraseña": "passw0rd!",
+    "fechaDeNacimiento": "1988-03-27"
+  },
+  {
+    "id": 6,
+    "nombre": "Sofía Fernández",
+    "email": "sofia.fernandez@example.com",
+    "contraseña": "safepass987",
+    "fechaDeNacimiento": "1995-09-13"
+  },
+  {
+    "id": 7,
+    "nombre": "Jorge Sánchez",
+    "email": "jorge.sanchez@example.com",
+    "contraseña": "newPass123",
+    "fechaDeNacimiento": "1982-12-05"
+  },
+  {
+    "id": 8,
+    "nombre": "Isabel Gómez",
+    "email": "isabel.gomez@example.com",
+    "contraseña": "mypassword456",
+    "fechaDeNacimiento": "1989-06-14"
+  },
+  {
+    "id": 9,
+    "nombre": "Diego Rodríguez",
+    "email": "diego.rodriguez@example.com",
+    "contraseña": "superSecret789",
+    "fechaDeNacimiento": "1993-10-21"
+  },
+  {
+    "id": 10,
+    "nombre": "Laura Morales",
+    "email": "laura.morales@example.com",
+    "contraseña": "password999",
+    "fechaDeNacimiento": "1987-08-30"
+  }
+]

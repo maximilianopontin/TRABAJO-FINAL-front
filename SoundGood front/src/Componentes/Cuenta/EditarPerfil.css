@@ -1,0 +1,32 @@
+
+  .container-editar-perfil {
+    max-width: 40%;
+    margin: 50px auto;
+    padding: 50px;
+    border: #ddd solid;
+    border-radius: 8px;
+    height: 50%;
+  }
+  label {
+    margin-bottom: 8px;
+    color: #000;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"] {
+    width: 100%;
+  }
+
+  

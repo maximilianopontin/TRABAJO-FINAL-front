@@ -11,6 +11,9 @@ import { Biblioteca } from './Componentes/Biblioteca/Biblioteca';
 import { Nav } from './Componentes/Nav/Nav';
 import { BrowserRouter as Router ,Route, Routes } from 'react-router-dom';
 import {PagInicioSesion} from './Componentes/Iniciar sesion/InicioSesion'
+import Cuenta from './Componentes/Cuenta/Cuenta';
+import Premium from './Componentes/Cuenta/Premium';
+import EditaPerfil from './Componentes/Cuenta/EditarPerfin';
 function App() {
     return (
         <Router>
@@ -26,6 +29,9 @@ function App() {
                     <Route path="/ayudas" element={<Ayudas />} />
                     <Route path="/biblioteca" element={<Biblioteca />} />
                     <Route path="/nav" element={<Nav />} />
+                    <Route path="/cuenta" element={<Cuenta/>} />
+                    <Route path="/premium" element={<Premium/>} />
+                    <Route path="/editar-Perfil" element={<EditaPerfil/>} />
                 </Routes>
             </div>
         </Router>
