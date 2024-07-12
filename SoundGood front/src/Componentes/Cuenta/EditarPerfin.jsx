@@ -13,7 +13,6 @@ function EditaPerfil() {
         contraseña: '',
         fechaDeNacimiento: ''
     });
-
     const [mensajeGuardado, setMensajeGuardado] = useState(false);
 
     const clienteId = 8; // Id del cliente que deseas editar

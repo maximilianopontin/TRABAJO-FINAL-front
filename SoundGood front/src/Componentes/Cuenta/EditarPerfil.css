@@ -6,15 +6,18 @@
     border-radius: 8px;
     height: 50%;
   }
+
   label {
     margin-bottom: 8px;
     color: #ffffff;
   }
+
   form {
     display: flex;
     flex-direction: column;
   }
-.input-editar-Perfil{
+
+  .input-editar-Perfil {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -22,5 +25,8 @@
     width: 100%;
   }
 
+  .contenedor-premium {
+    margin-bottom: 100px;
+    margin-top: 70px;
 
-  
+  }

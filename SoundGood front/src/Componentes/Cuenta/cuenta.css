@@ -1,4 +1,4 @@
-.cuenta-btn{
+.cuenta-btn {
     display: flex; /* Usar flexbox para el diseño */
     flex-direction: column; /* Alinear elementos verticalmente */
     width: 30%; /* Ancho del formulario */
@@ -6,17 +6,18 @@
     padding: 10px;
     border: 1px solid #ccc; /* Borde del formulario */
     border-radius: 5px; /* Bordes redondeados */
-margin-bottom: 200px;
-margin-top: 100px;
+    margin-bottom: 200px;
+    margin-top: 100px;
 }
-.btn{
+
+.btn {
     align-self: center; /*contenedor al centro*/
-    align-items: center;/* texto centrado*/
+    align-items: center; /* texto centrado*/
     width: 90%; /* Ancho completo para el botón */
     padding: 10px; /* Espaciado interno */
     background-color: #5fa25b; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
-    border: none; /* Sin borde */
+    border: none;  /* Sin borde */
     border-radius: 3px; /* Bordes redondeados */
-    margin: 10px ;
+    margin: 10px;
 }
