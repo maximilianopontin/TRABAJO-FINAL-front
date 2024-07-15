@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { SongCard } from "./Card";
-import './card.css'
+import './card.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Nav } from "../Nav/Nav";
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from "../Footer/Footer";
 
-export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
+export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas, onFavorite }) {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
+    const [favorites, setFavorites] = useState([]);
+    const [playlists, setPlaylists] = useState([]);
 
     useEffect(() => {
         fetch('/CancionesTop50.json')
@@ -45,7 +47,19 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             });
     }, []);
 
-     const settings = {
+    const handleFavorite = (song) => {
+        setFavorites([...favorites, song]);
+    };
+
+    const handleAddToPlaylist = (song, playlistName) => {
+        setPlaylists(playlists.map(playlist =>
+            playlist.name === playlistName ?
+                { ...playlist, songs: [...playlist.songs, song] } :
+                playlist
+        ));
+    };
+
+    const settings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -76,7 +90,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             <div>
                 <Nav />
             </div>
-            <p className="section-title">Top 50</p>
+            <p className="section-title">Top 10</p>
             <Slider {...settings}>
                 {songsTop50.map((song, index) => (
                     <SongCard
@@ -85,6 +99,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                         tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
+                        onFavorite={() => handleFavorite(song)}  // Pasa la función handleFavorite
+                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}  // Pasa la función handleAddToPlaylist
                     />
                 ))}
             </Slider>
@@ -97,7 +113,9 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                         tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
-                    />
+                        onFavorite={() => handleFavorite(song)}  // Pasa la función handleFavorite
+                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}  // Pasa la función handleAddToPlaylist
+                   />
                 ))}
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
@@ -105,8 +123,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 redirectToPlanPremium={redirectToPlanPremium}
                 redirectToVersionGratuita={redirectToVersionGratuita}
                 redirectToAyudas={redirectToAyudas}
-            />{/* Renderiza el componente del footer con las funciones de redirección */}
-
+            />
         </>
-    )
+    );
 }
