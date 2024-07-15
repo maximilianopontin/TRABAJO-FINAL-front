@@ -1,21 +1,14 @@
 import React, { useState } from "react";
+import "./Biblioteca.css";
 import { Nav } from '../Nav/Nav';
-import Slider from "react-slick";
-import { SongCard } from "../Inicio/Card";
+import { useFavorites } from '../Biblioteca/FavoritesContext';
 import '../Inicio/card.css';
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from '../Footer/Footer';
-import Modal from 'react-modal';
-
-Modal.setAppElement('#root');
 
 export function Biblioteca() {
-    const [favorites, setFavorites] = useState([]);
-  
-    const handleFavorite = (song) => {
-        setFavorites([...favorites, song]);
-    };
-
+    const { favorites } = useFavorites();// Usa el contexto
+    const [selectedSongUrl, setSelectedSongUrl] = useState(null);
 
     return (
         <>
@@ -23,9 +16,15 @@ export function Biblioteca() {
                 <Nav />
             </div>
             <p className="section-title">Tus favoritos</p>
-        
+            <div className="favorites-list">
+                {favorites.map((song, index) => (
+                    <div key={index} className="favorite-item" onClick={() => setSelectedSongUrl(song.url)}>
+                        <p>{song.title}</p>
+                    </div>
+                ))}
+            </div>
+            {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
             <Footer />
-       
         </>
     );
 }

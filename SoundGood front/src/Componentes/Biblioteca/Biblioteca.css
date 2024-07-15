@@ -1,0 +1,16 @@
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items:start; /* Centra los items horizontalmente */
+}
+
+.favorite-item {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #5fa25b;
+    border-radius: 10px;
+    max-width: 500px; /* Define el ancho máximo del elemento */
+    width: 100%; /* Asegura que el elemento ocupe el 100% de su contenedor hasta el ancho máximo */
+    box-sizing: border-box; /* Incluye el padding y el border en el tamaño total */
+}

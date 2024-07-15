@@ -7,13 +7,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { Nav } from "../Nav/Nav";
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from "../Footer/Footer";
+import { useFavorites } from '../Biblioteca/FavoritesContext';//importamos contexto
 
-export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas, onFavorite }) {
+export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
-    const [favorites, setFavorites] = useState([]);
-    const [playlists, setPlaylists] = useState([]);
+    const { addFavorite } = useFavorites();
 
     useEffect(() => {
         fetch('/CancionesTop50.json')
@@ -47,16 +47,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             });
     }, []);
 
-    const handleFavorite = (song) => {
-        setFavorites([...favorites, song]);
-    };
-
     const handleAddToPlaylist = (song, playlistName) => {
-        setPlaylists(playlists.map(playlist =>
-            playlist.name === playlistName ?
-                { ...playlist, songs: [...playlist.songs, song] } :
-                playlist
-        ));
+        // Implementa la lógica para añadir a la playlist aquí
     };
 
     const settings = {
@@ -99,8 +91,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                         tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
-                        onFavorite={() => handleFavorite(song)}  // Pasa la función handleFavorite
-                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}  // Pasa la función handleAddToPlaylist
+                        onFavorite={() => addFavorite(song)} // Usa la función del contexto
+                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}
                     />
                 ))}
             </Slider>
@@ -113,9 +105,9 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                         tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
-                        onFavorite={() => handleFavorite(song)}  // Pasa la función handleFavorite
-                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}  // Pasa la función handleAddToPlaylist
-                   />
+                        onFavorite={() => addFavorite(song)} // Usa la función del contexto
+                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}
+                    />
                 ))}
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
