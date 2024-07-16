@@ -55,8 +55,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         responsive: [
             {
                 breakpoint: 1024,
@@ -87,6 +87,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 {songsTop50.map((song, index) => (
                     <SongCard
                         key={index}
+                        image= {song.image }
                         title={song.title}
                         tags={song.tags}
                         url={song.url}
@@ -101,6 +102,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 {songsTendencias.map((song, index) => (
                     <SongCard
                         key={index}
+                        image= {song.image }
                         title={song.title}
                         tags={song.tags}
                         url={song.url}
