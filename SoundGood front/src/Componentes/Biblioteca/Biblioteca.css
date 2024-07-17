@@ -1,16 +1,73 @@
-.favorites-list {
+.favorites-list,.playlist-list {
     display: flex;
     flex-direction: column;
     gap: 5px;
     align-items:start; /* Centra los items horizontalmente */
 }
 
-.favorite-item {
+.favorite-item, .playlist-item {
     cursor: pointer;
     padding: 5px;
+    margin-left: 15px;
     border: 1px solid #5fa25b;
     border-radius: 10px;
     max-width: 500px; /* Define el ancho máximo del elemento */
     width: 100%; /* Asegura que el elemento ocupe el 100% de su contenedor hasta el ancho máximo */
     box-sizing: border-box; /* Incluye el padding y el border en el tamaño total */
+}
+.create-playlist-button {
+    background-color: #5fa25b; /* Cambia este color al que prefieras */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.create-playlist-button:hover {
+    background-color: #45a049; /* Color al pasar el ratón por encima */
+}
+
+.playlist-title{
+    margin-left: 15px;
+    cursor: pointer;
+    color:#5fa25b;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #5fa25b;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.modal-content button {
+    margin-right: 10px;
+
 }
