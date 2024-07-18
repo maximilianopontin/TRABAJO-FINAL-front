@@ -2,16 +2,15 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    align-items:start; /* Centra los items horizontalmente */
+    align-items:start; 
 }
 
 .favorite-item, .playlist-item {
     cursor: pointer;
-    padding: 5px;
     margin-left: 15px;
     border: 1px solid #5fa25b;
-    border-radius: 10px;
-    max-width: 500px; /* Define el ancho máximo del elemento */
+    border-radius: 5px;
+    max-width: 400px; /* Define el ancho máximo del elemento */
     width: 100%; /* Asegura que el elemento ocupe el 100% de su contenedor hasta el ancho máximo */
     box-sizing: border-box; /* Incluye el padding y el border en el tamaño total */
 }
@@ -30,6 +29,9 @@
 }
 
 .playlist-title{
+    display: flex;
+    flex-direction: column;
+    align-items:start; /* Centra los items horizontalmente */
     margin-left: 15px;
     cursor: pointer;
     color:#5fa25b;
