@@ -36,8 +36,18 @@
     cursor: pointer;
     color:#5fa25b;
 }
+.card-playlist {
+    display: flex;
+    flex-direction: column;
+    align-items:center; 
+    width: 100%;
 
-
+}
+.reproductor-container {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor padre */
+    max-width: 700px; /* Establece un ancho máximo para el reproductor */
+    margin: 0 auto; /* Centra el reproductor horizontalmente */
+}
 .modal {
     position: fixed;
     top: 0;

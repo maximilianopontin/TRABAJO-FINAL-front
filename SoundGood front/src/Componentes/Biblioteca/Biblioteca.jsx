@@ -5,10 +5,11 @@ import { useFavorites } from '../Biblioteca/FavoritesContext';
 import '../Inicio/card.css';
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from '../Footer/Footer';
+import { SongCard } from '../Inicio/Card';
 
 export function Biblioteca() {
     const { favorites, playlists, createPlaylist } = useFavorites(); // Usa el contexto
-    const [selectedSongUrl, setSelectedSongUrl] = useState(null);
+    const [selectedSong, setSelectedSong] = useState(null); // Cambiado de songUrl a song
     const [playlistName, setPlaylistName] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
@@ -21,6 +22,10 @@ export function Biblioteca() {
         }
     };
 
+    const handleSongClick = (song) => {
+        setSelectedSong(song); // Guarda la canción seleccionada
+    };
+
     return (
         <>
             <div>
@@ -29,7 +34,7 @@ export function Biblioteca() {
             <p className="section-title">Tus favoritos</p>
             <div className="favorites-list">
                 {favorites.map((song, index) => (
-                    <div key={index} className="favorite-item" onClick={() => setSelectedSongUrl(song.url)}>
+                    <div key={index} className="favorite-item" onClick={() => handleSongClick(song)}>
                         <p>{song.title}</p>
                     </div>
                 ))}
@@ -43,7 +48,7 @@ export function Biblioteca() {
                     {selectedPlaylist === name && (
                         <div className="playlist-list">
                             {playlists[name].map((song, songIndex) => (
-                                <div key={songIndex} className="playlist-item" onClick={() => setSelectedSongUrl(song.url)}>
+                                <div key={songIndex} className="playlist-item" onClick={() => handleSongClick(song)}>
                                     <p>{songIndex + 1}. {song.title}</p>
                                 </div>
                             ))}
@@ -67,7 +72,24 @@ export function Biblioteca() {
                     </div>
                 </div>
             )}
-            {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
+
+            {selectedSong && (
+                <div className="card-playlist">
+                    <SongCard
+                        url={selectedSong.url}
+                        title={selectedSong.title}
+                        tags={selectedSong.tags}
+                        image={selectedSong.image}
+                        artist={selectedSong.artist}
+                    />
+
+                    <div className="reproductor-container">
+                        <Reproductor
+                            songUrl={selectedSong.url}
+                        />
+                    </div>
+                </div>
+            )}
             <Footer />
         </>
     );
