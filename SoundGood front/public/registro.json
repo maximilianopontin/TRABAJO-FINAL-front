@@ -68,5 +68,12 @@
     "email": "laura.morales@example.com",
     "contraseña": "Password999@",
     "fechaDeNacimiento": "1987-08-30"
+  },
+  {
+    "id": 11,
+    "nombre": "Maximiliano Pontin",
+    "email": "maxipontin92@gmail.com",
+    "contraseña": "Mmp1992..",
+    "fechaDeNacimiento": "1992-11-15"
   }
 ]

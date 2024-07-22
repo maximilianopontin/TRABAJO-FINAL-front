@@ -7,13 +7,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { Nav } from "../Nav/Nav";
 import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from "../Footer/Footer";
+import { useFavorites } from '../Biblioteca/FavoritesContext';
 
-export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas, onFavorite }) {
+export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
-    const [favorites, setFavorites] = useState([]);
-    const [playlists, setPlaylists] = useState([]);
+    const { addFavorite, addSongToPlaylist } = useFavorites();
 
     useEffect(() => {
         fetch('/CancionesTop50.json')
@@ -47,24 +47,19 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             });
     }, []);
 
-    const handleFavorite = (song) => {
-        setFavorites([...favorites, song]);
-    };
-
-    const handleAddToPlaylist = (song, playlistName) => {
-        setPlaylists(playlists.map(playlist =>
-            playlist.name === playlistName ?
-                { ...playlist, songs: [...playlist.songs, song] } :
-                playlist
-        ));
+    const handleAddToPlaylist = (song) => {
+        const playlistName = prompt('Introduce el nombre de la playlist:');
+        if (playlistName) {
+            addSongToPlaylist(song, playlistName);
+        }
     };
 
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         responsive: [
             {
                 breakpoint: 1024,
@@ -95,12 +90,13 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 {songsTop50.map((song, index) => (
                     <SongCard
                         key={index}
+                        image={song.image}
                         title={song.title}
                         tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
-                        onFavorite={() => handleFavorite(song)}  // Pasa la función handleFavorite
-                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}  // Pasa la función handleAddToPlaylist
+                        onFavorite={() => addFavorite(song)}
+                        onAddToPlaylist={() => handleAddToPlaylist(song)}
                     />
                 ))}
             </Slider>
@@ -109,17 +105,19 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 {songsTendencias.map((song, index) => (
                     <SongCard
                         key={index}
+                        image={song.image}
                         title={song.title}
                         tags={song.tags}
                         url={song.url}
                         onClick={() => setSelectedSongUrl(song.url)}
-                        onFavorite={() => handleFavorite(song)}  // Pasa la función handleFavorite
-                        onAddToPlaylist={() => handleAddToPlaylist(song, "Playlist Name")}  // Pasa la función handleAddToPlaylist
+                        onFavorite={() => addFavorite(song)}
+                        onAddToPlaylist={() => handleAddToPlaylist(song)}
                     />
                 ))}
             </Slider>
             {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
-            <Footer redirectToAcercaDe={redirectToAcercaDe}
+            <Footer 
+                redirectToAcercaDe={redirectToAcercaDe}
                 redirectToPlanPremium={redirectToPlanPremium}
                 redirectToVersionGratuita={redirectToVersionGratuita}
                 redirectToAyudas={redirectToAyudas}
