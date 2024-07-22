@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function Footer({ redirectToAcercaDe, redirectToPlanPremium, redirectToVersionGratuita, redirectToAyudas }) {
+function Footer() {
 
     return (
         <footer id="footer" class="footer">

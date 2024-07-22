@@ -73,7 +73,7 @@ export const Nav = () => {
                 </div>
                 <div className="nav-links">
                     <Link to="/biblioteca">Biblioteca</Link>
-                    <Link to="">Cuenta</Link>
+                    <Link to="/cuenta">Cuenta</Link>
                 </div>
             </div>
             {isModalOpen && (

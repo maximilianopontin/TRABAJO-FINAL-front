@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from '../../logo/logo.png';
 import "./InicioSesion.css";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function PagInicioSesion() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [users, setUsers] = useState([]);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Cargar el JSON de usuarios
+        fetch('/registro.json') // Ajusta la ruta según donde esté tu archivo JSON
+            .then(response => response.json())
+            .then(data => setUsers(data))
+            .catch(error => console.error('Error al cargar los datos de usuarios:', error));
+    }, []);
 
     // Validamos que la contraseña cumpla con las condiciones dadas.
     const handleFormSubmit = (e) => {
@@ -24,9 +33,18 @@ export function PagInicioSesion() {
             return;
         }
 
-        // Si todas las validaciones son exitosas, limpiamos el formulario y redirigimos a Home
-        clearForm();
-        navigate("/home")
+        const user = users.find(user => user.email === email);
+
+        if (user) {
+            if (user.contraseña === password) {
+                clearForm();
+                navigate("/home");
+            } else {
+                setErrorMessage('La contraseña es incorrecta.');
+            }
+        } else {
+            setErrorMessage('El email no coincide con ningún usuario registrado.');
+        }
     }
 
     // Validamos si la contraseña está bien o mal
@@ -36,7 +54,7 @@ export function PagInicioSesion() {
         if (validatePassword(newPassword)) {
             setErrorMessage('');
         } else {
-            setErrorMessage('La contraseña es incorrecta.');
+            setErrorMessage('La contraseña debe tener al menos una mayúscula, un número y un símbolo.');
         }
     }
 
@@ -77,7 +95,6 @@ export function PagInicioSesion() {
                     {errorMessage ? errorMessage : ""}
                 </div>
             </form>
-            
         </div>
     );
 }
