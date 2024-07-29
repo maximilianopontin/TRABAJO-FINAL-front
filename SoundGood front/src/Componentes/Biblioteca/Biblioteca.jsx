@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Biblioteca.css";
 import { Nav } from '../Nav/Nav';
 import { useFavorites } from '../Biblioteca/FavoritesContext';
@@ -13,6 +13,8 @@ export function Biblioteca() {
     const [playlistName, setPlaylistName] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+    const [allSongs, setAllSongs] = useState([]);
+
 
     const handleCreatePlaylist = () => {
         if (playlistName.trim()) {
@@ -75,6 +77,7 @@ export function Biblioteca() {
 
             {selectedSong && (
                 <div className="card-playlist">
+
                     <SongCard
                         url={selectedSong.url}
                         title={selectedSong.title}
@@ -84,7 +87,9 @@ export function Biblioteca() {
                     />
 
                     <div className="reproductor-container">
+
                         <Reproductor
+
                             songUrl={selectedSong.url}
                         />
                     </div>

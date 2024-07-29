@@ -37,18 +37,19 @@ function Reproductor() {
       .catch(error => console.error('Error loading the tracks:', error));
   }, []);
 
+
   return (
     <div>
-    {tracks.length > 0 && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
-      <Canciones
+      {tracks.length > 0 && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
+        <Canciones
 
-        trackList={tracks}
-        includeTags={false}
-        includeSearch={false}
-        showPlaylist={false}
-        sortTracks={true}
-        autoPlayNextTrack={true}
-        customColorScheme={colors} />
+          trackList={tracks}
+          includeTags={false}
+          includeSearch={false}
+          showPlaylist={false}
+          sortTracks={true}
+          autoPlayNextTrack={true}
+          customColorScheme={colors} />
 
       )}
     </div>
