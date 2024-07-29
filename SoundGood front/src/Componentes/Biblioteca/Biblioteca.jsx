@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* gestiona la visualización y administración de canciones favoritas y listas de reproducción.*/
+
+import React, { useState} from "react";
 import "./Biblioteca.css";
 import { Nav } from '../Nav/Nav';
 import { useFavorites } from '../Biblioteca/FavoritesContext';
@@ -13,7 +15,7 @@ export function Biblioteca() {
     const [playlistName, setPlaylistName] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-    const [allSongs, setAllSongs] = useState([]);
+   
 
 
     const handleCreatePlaylist = () => {
