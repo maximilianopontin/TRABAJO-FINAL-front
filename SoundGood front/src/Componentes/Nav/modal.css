@@ -11,7 +11,7 @@
   background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro transparente */
 }
 
-.modal {
+.modalNav {
   background-color: rgba(95, 162, 91, 0.8); /* Fondo verde sólido con mayor transparencia */
   width: 60%;  /* Ancho del modal */
   max-width: 800px; /* Máximo ancho */

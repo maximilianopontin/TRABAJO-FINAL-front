@@ -78,7 +78,7 @@ export const Nav = () => {
             </div>
             {isModalOpen && (
                 <div className="modal-overlay">
-                    <div className="modal">
+                    <div className="modalNav">
                         <div className="modal-content">
                             <span className="close" onClick={() => setModalOpen(false)}>×</span>
                             <h2>Canciones encontradas:</h2>

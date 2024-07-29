@@ -14,6 +14,7 @@ import {PagInicioSesion} from './Componentes/Iniciar sesion/InicioSesion'
 import Cuenta from './Componentes/Cuenta/Cuenta';
 import Premium from './Componentes/Cuenta/Premium';
 import EditaPerfil from './Componentes/Cuenta/EditarPerfin';
+
 function App() {
     return (
         <Router>
