@@ -1,3 +1,4 @@
+//muestra las canciones más populares y las tendencias actuales, permitiendo añadir canciones a favoritos y listas de reproducción.
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { SongCard } from "./Card";
@@ -46,7 +47,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 console.error('Error cargando las canciones:', error);
             });
     }, []);
-
+//Permite al usuario añadir una canción a una lista de reproducción.
     const handleAddToPlaylist = (song) => {
         const playlistName = prompt('Introduce el nombre de la playlist:');
         if (playlistName) {

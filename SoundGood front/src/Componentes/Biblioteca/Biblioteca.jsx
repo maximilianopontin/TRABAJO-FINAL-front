@@ -1,6 +1,6 @@
 /* gestiona la visualización y administración de canciones favoritas y listas de reproducción.*/
 
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./Biblioteca.css";
 import { Nav } from '../Nav/Nav';
 import { useFavorites } from '../Biblioteca/FavoritesContext';
@@ -10,14 +10,14 @@ import Footer from '../Footer/Footer';
 import { SongCard } from '../Inicio/Card';
 
 export function Biblioteca() {
-    const { favorites, playlists, createPlaylist } = useFavorites(); // Usa el contexto
-    const [selectedSong, setSelectedSong] = useState(null); // Cambiado de songUrl a song
-    const [playlistName, setPlaylistName] = useState('');
-    const [showModal, setShowModal] = useState(false);
-    const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-   
+    const { favorites, playlists, createPlaylist } = useFavorites(); // Usa el contexto 
+    const [selectedSong, setSelectedSong] = useState(null); //canción seleccionada actualmente.
+    const [playlistName, setPlaylistName] = useState('');//nombre de la nueva lista de reproducción que se está creando.
+    const [showModal, setShowModal] = useState(false);//booleano para mostrar u ocultar el modal de creación de listas de reproducción.
+    const [selectedPlaylist, setSelectedPlaylist] = useState(null);//lista de reproducción seleccionada actualmente.
 
 
+    // Crea una nueva lista de reproducción con el nombre introducido y resetea el estado correspondiente.
     const handleCreatePlaylist = () => {
         if (playlistName.trim()) {
             createPlaylist(playlistName.trim());
@@ -25,7 +25,7 @@ export function Biblioteca() {
             setShowModal(false);
         }
     };
-
+    // Establece la canción seleccionada cuando se hace clic en una canción.
     const handleSongClick = (song) => {
         setSelectedSong(song); // Guarda la canción seleccionada
     };
@@ -36,6 +36,7 @@ export function Biblioteca() {
                 <Nav />
             </div>
             <p className="section-title">Tus favoritos</p>
+            {/*Se mapean y muestran las canciones favoritas, permitiendo seleccionar una canción al hacer clic.*/}
             <div className="favorites-list">
                 {favorites.map((song, index) => (
                     <div key={index} className="favorite-item" onClick={() => handleSongClick(song)}>
@@ -44,8 +45,8 @@ export function Biblioteca() {
                 ))}
             </div>
             <p className="section-title">Tus Playlists</p>
+            {/*Se mapean y muestran las listas de reproducción. Al hacer clic en una lista, se muestra su contenido.*/}
             <button className="create-playlist-button" onClick={() => setShowModal(true)}>Crear Playlist</button>
-
             {Object.keys(playlists).map((name, index) => (
                 <div key={index}>
                     <h3 className="playlist-title" onClick={() => setSelectedPlaylist(name)}>{name}</h3>
@@ -60,7 +61,7 @@ export function Biblioteca() {
                     )}
                 </div>
             ))}
-
+            {/*Se muestra un modal para crear una nueva lista de reproducción.*/}
             {showModal && (
                 <div className="modal">
                     <div className="modal-content">
@@ -76,7 +77,7 @@ export function Biblioteca() {
                     </div>
                 </div>
             )}
-
+            {/*Se muestra el componente Reproductor y SongCard para la canción seleccionada.*/}
             {selectedSong && (
                 <div className="card-playlist">
 

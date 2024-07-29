@@ -1,3 +1,4 @@
+//se encarga de manejar las canciones favoritas y las listas de reproducción.
 import React, { createContext, useState, useContext } from 'react';
 
 // Crear el contexto
@@ -7,13 +8,14 @@ const FavoritesContext = createContext();
 export const FavoritesProvider = ({ children }) => {
     const [favorites, setFavorites] = useState([]);
     const [playlists, setPlaylists] = useState({});
-
+    
+//Añade una canción a los favoritos si no está ya en la lista.
     const addFavorite = (song) => {
         if (!favorites.some(fav => fav.url === song.url)) {
             setFavorites([...favorites, song]);
         }
     };
-
+// Crea una nueva lista de reproducción si no existe.
     const createPlaylist = (playlistName) => {
         if (!playlists[playlistName]) {
             setPlaylists(prevPlaylists => ({
@@ -22,7 +24,7 @@ export const FavoritesProvider = ({ children }) => {
             }));
         }
     };
-
+//Añade una canción a una lista de reproducción existente.
     const addSongToPlaylist = (song, playlistName) => {
         setPlaylists(prevPlaylists => {
             const updatedPlaylist = prevPlaylists[playlistName]
