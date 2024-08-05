@@ -46,7 +46,7 @@ function EditaPerfil() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí deberías hacer una llamada a la API para guardar los datos actualizados del cliente
+        // llamada a la API para guardar los datos actualizados del cliente
         console.log('Datos actualizados del cliente:', cliente);
         setMensajeGuardado(true);
         // Ocultar el mensaje después de 3 segundos
@@ -99,10 +99,13 @@ function EditaPerfil() {
                         />
                     </div>
                     <button className="btn" type="submit">Guardar Cambios</button>
+                    <div className="error-message">
+                        {mensajeGuardado && <p className="mensaje-guardado">Sus cambios han sido guardados</p>}
+
+                    </div>
                 </form>
-                {mensajeGuardado && <p className="mensaje-guardado">Sus cambios han sido guardados</p>}
                 <Link to="/cuenta">
-                    <button className="btn">Regresar a la cuenta</button>
+                    <button className="btn">Regresar a cuenta</button>
                 </Link>
             </div>
             <div>

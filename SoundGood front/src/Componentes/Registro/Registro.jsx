@@ -106,16 +106,10 @@ export function PagRegistro() {
 
     return (
         <div>
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" className="Logo" />
             <form className="form" onSubmit={handleFormSubmit}>
                 <input type="text" name="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
                 <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange} required />
-                <div className="parrafos">
-                    <p>Para garantizar la seguridad de tu cuenta, tu contraseña debe cumplir con los siguientes requisitos:</p>
-                    <p>Debe contener al menos:</p>
-                    <p> Una letra mayúscula, un carácter especial, un número y varias letras minúsculas </p>
-                    <p>¡Gracias por tu cooperación en mantener tu cuenta segura!</p>
-                </div>
                 <input type="text" name="nombre" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                 <DatePicker
                     selected={fechaNacimiento}

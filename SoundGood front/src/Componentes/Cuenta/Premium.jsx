@@ -30,34 +30,37 @@ function Premium() {
             <Nav />
             <div className="contenedor-premium">
                 <form className="form" onSubmit={handleSubmit}>
-                    <input 
-                        type="text" 
-                        name="tarjeta" 
-                        placeholder="N° de tarjeta" 
-                        required 
+                    <h1>Acceder a Premium</h1>
+                    <input
+                        type="text"
+                        name="tarjeta"
+                        placeholder="N° de tarjeta"
+                        required
                         value={cliente.tarjeta}
                         onChange={handleChange}
                     />
-                    <input 
-                        type="date" 
-                        name="fecha" 
-                        placeholder="Fecha" 
-                        required 
+                    <input
+                        type="date"
+                        name="fecha"
+                        placeholder="Fecha"
+                        required
                         value={cliente.fecha}
                         onChange={handleChange}
                     />
-                    <input 
-                        type="text" 
-                        name="codigo" 
-                        placeholder="codigo" 
-                        required 
+                    <input
+                        type="text"
+                        name="codigo"
+                        placeholder="codigo"
+                        required
                         value={cliente.codigo}
                         onChange={handleChange}
                     />
                     <button type="submit" className="btn">Pagar</button>
-                    {mensajeGuardado && <p className="mensaje-guardado">Su pago fue exitoso, disfrute de Sound Good premium</p>}
+                    <div className="error-message">
+                        {mensajeGuardado && <p className="mensaje-guardado">Su pago fue exitoso, disfrute de Sound Good premium</p>}
+                    </div>
                     <Link to="/cuenta">
-                        <button className="btn">Regresar a la cuenta</button>
+                        <button className="btn">Regresar a cuenta</button>
                     </Link>
                 </form>
             </div>

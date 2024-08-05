@@ -1,10 +1,10 @@
   .container-editar-perfil {
-    max-width: 40%;
+    max-width: 35%;
     margin: 50px auto;
     padding: 50px;
     border: #ddd solid;
     border-radius: 8px;
-    height: 50%;
+    height: 55%;
   }
 
   label {

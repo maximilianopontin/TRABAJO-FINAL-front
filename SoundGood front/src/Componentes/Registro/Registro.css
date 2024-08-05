@@ -1,3 +1,12 @@
+.fromRegistro{
+    display: flex; /* Usar flexbox para el diseño */
+    flex-direction: column; /* Alinear elementos verticalmente */
+    width: 70%; /* Ancho del formulario */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    padding: 20px;
+    border: 1px solid #ccc; /* Borde del formulario */
+    border-radius: 5px; /* Bordes redondeados */
+}
 .parrafos {
     color: white;
     margin-bottom: 8px;
