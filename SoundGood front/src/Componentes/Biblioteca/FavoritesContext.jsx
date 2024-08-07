@@ -25,18 +25,20 @@ export const FavoritesProvider = ({ children }) => {
         }
     };
 //Añade una canción a una lista de reproducción existente.
-    const addSongToPlaylist = (song, playlistName) => {
-        setPlaylists(prevPlaylists => {
-            const updatedPlaylist = prevPlaylists[playlistName]
-                ? [...prevPlaylists[playlistName], song]
-                : [song];
-            return {
-                ...prevPlaylists,
-                [playlistName]: updatedPlaylist
-            };
-        });
-    };
-
+const addSongToPlaylist = (song, playlistName) => {
+    if (!playlists[playlistName]) {
+        createPlaylist(playlistName);
+    }
+    setPlaylists(prevPlaylists => {
+        const updatedPlaylist = prevPlaylists[playlistName]
+            ? [...prevPlaylists[playlistName], song]
+            : [song];
+        return {
+            ...prevPlaylists,
+            [playlistName]: updatedPlaylist
+        };
+    });
+};
     return (
         <FavoritesContext.Provider value={{ favorites, addFavorite, playlists, createPlaylist, addSongToPlaylist }}>
             {children}
