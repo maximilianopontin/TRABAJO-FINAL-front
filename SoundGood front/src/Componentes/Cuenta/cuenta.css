@@ -1,3 +1,6 @@
+.cuenta{
+    margin-top: 100px;
+}
 .cuenta-btn {
     display: flex; /* Usar flexbox para el diseño */
     flex-direction: column; /* Alinear elementos verticalmente */

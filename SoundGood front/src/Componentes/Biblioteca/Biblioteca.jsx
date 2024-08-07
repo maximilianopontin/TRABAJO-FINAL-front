@@ -35,7 +35,8 @@ export function Biblioteca() {
             <div>
                 <Nav />
             </div>
-            <p className="section-title">Tus favoritos</p>
+            <div className="biblioteca">
+               <p className="section-title">Tus favoritos</p>
             {/*Se mapean y muestran las canciones favoritas, permitiendo seleccionar una canción al hacer clic.*/}
             <div className="favorites-list">
                 {favorites.map((song, index) => (
@@ -98,7 +99,9 @@ export function Biblioteca() {
                     </div>
                 </div>
             )}
-            <Footer />
+            <Footer /> 
+            </div>
+            
         </>
     );
 }

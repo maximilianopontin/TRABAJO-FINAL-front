@@ -7,10 +7,12 @@ import Footer from "../Footer/Footer";
 //El componente PagInicio recibe dos props
 function Cuenta() {
     return (
-        <div>
-            <div> 
+    <>
+    <div> 
                 <Nav/>
             </div>
+        <div className="cuenta">
+            
             <div className="cuenta-btn">
                 <Link to="/editar-perfil">
                     <button className="btn">Editar perfil</button>
@@ -27,6 +29,8 @@ function Cuenta() {
                 <Footer/>
             </div>
         </div>
+    </>
+    
     );
 }
 

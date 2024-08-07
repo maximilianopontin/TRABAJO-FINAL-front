@@ -55,7 +55,7 @@ function Reproductor({ songUrl}) {
   }, [songUrl, Top50Tracks,CancionesTracks]);//Si songUrl está presente, busca la pista correspondiente en tracks y actualiza currentTrack con la pista seleccionada.
 
   return (
-    <div>
+    <div className="reproductor">
     { currentTrack && ( 
       <Canciones
         key={currentTrack.url} //  asegurarnos de que el componente se remonte cuando la URL de la pista cambie. 

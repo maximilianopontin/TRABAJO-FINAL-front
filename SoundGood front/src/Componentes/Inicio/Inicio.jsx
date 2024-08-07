@@ -110,7 +110,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             <div>
                 <Nav />
             </div>
-            <p className="section-title">Top 10</p>
+            <div className="home">
+                <p className="section-title">Top 10</p>
             <Slider {...settings}>
                 {songsTop50.map((song, index) => (
                     <SongCard
@@ -165,6 +166,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                     </div>
                 </div>
             )}
+            </div>
+            
         </>
     );
 }

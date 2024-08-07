@@ -1,6 +1,13 @@
-
-
 /*estilo contenedor */
+
+.reproductor{
+  margin-bottom: -29px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
  
 ._wrapper_1sefb_1{
   overflow: visible !important;

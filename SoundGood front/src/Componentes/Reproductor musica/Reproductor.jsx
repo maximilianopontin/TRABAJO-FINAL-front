@@ -39,7 +39,7 @@ function Reproductor() {
 
 
   return (
-    <div>
+    <div  className="reproductor">
       {tracks.length > 0 && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
         <Canciones
 
