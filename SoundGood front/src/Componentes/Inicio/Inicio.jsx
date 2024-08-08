@@ -150,9 +150,9 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
             />
             {isModalOpen && (
                 <div className="modal-overlay" onClick={closeModal}>
-                    <div className="Modal" onClick={(e) => e.stopPropagation()}>
+                    <div className="Modal-playlist" onClick={(e) => e.stopPropagation()}>
                         <h2>Añadir a Playlist</h2>
-                        <input className="modal-input"
+                        <input className="modal-input-playlist"
                             type="text"
                             placeholder="Nombre de la playlist"
                             value={playlistName}

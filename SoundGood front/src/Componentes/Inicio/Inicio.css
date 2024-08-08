@@ -2,7 +2,7 @@
     margin-top: 100px;
 }
 
-.Modal {
+.Modal-playlist {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -19,18 +19,8 @@
  
 }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.modal-input {
+
+.modal-input-playlist {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
