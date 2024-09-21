@@ -8,34 +8,32 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro transparente */
-}
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
+  }
 
 .modalNav {
-  background-color: rgba(95, 162, 91, 0.8); /* Fondo verde sólido con mayor transparencia */
-  width: 60%;  /* Ancho del modal */
-  max-width: 800px; /* Máximo ancho */
-  height: 60%; /* Altura del modal */
-  max-height: 600px; /* Máxima altura */
-  display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 4px;
+  background-color: rgb(255, 255, 255); 
+  width: 80%;  /* Ancho del modal ajustado */
+  max-width: 1000px; /* Máximo ancho ajustado */
+  height: 80%; /* Altura del modal ajustada */
+  max-height: 700px; /* Máxima altura ajustada */
+  display: flex;
+  flex-direction: column; /* Ajusta la dirección del contenido a columna */
+  border-radius: 10px;
+  overflow: hidden; /* Oculta el desbordamiento de contenido */
 }
 .modal-content {
+  display: flex;
+  flex-direction: column; /* Asegura que el título y el contenedor de tarjetas se apilen verticalmente */
   padding: 20px;
-  width: 90%; /* Ancho del contenido del modal */
-  height: 90%; /* Altura del contenido del modal */
-  max-width: 90%; /* Máximo ancho del contenido */
-  max-height: 90%; /* Máxima altura del contenido */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  position: relative;
-  overflow-y: auto; /* Para que el contenido sea desplazable si excede la altura */
+  width: 100%; /* Ancho del contenido del modal */
+  height: 100%; /* Altura del contenido del modal */
+  overflow-y: auto; /* Permite desplazamiento vertical si es necesario */
 }
 
 .close {
-  color: rgba(95, 162, 91, 0.8);
+  color: rgba(255, 3, 3, 0.8);
   position: absolute;
   top: 10px;
   right: 20px;
@@ -44,29 +42,35 @@
   cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
-  color: #aaa;
-  text-decoration: none;
-}
-
 .modal-content h2 {
   margin-top: 0;
-  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Color gris oscuro para el título */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .modal-content ul {
   list-style-type: none;
   padding: 0;
 }
-
-.modal-content ul li {
-  margin: 10px 0;
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Configuración de la cuadrícula */
+  grid-gap: 20px; /* Espaciado entre las tarjetas */
 }
-
-.modal-content ul li a {
-  color: #000000;
-  text-decoration: none;
+.card-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+  gap: 20px; /* Espaciado entre las tarjetas */
+  justify-content: flex-start; /* Alinea las tarjetas al inicio de la fila */
+}
+/* Ajusta los estilos de la tarjeta si es necesario */
+.song-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 

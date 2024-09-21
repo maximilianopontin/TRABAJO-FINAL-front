@@ -58,27 +58,15 @@
 
 /* Estilos para los botones */
 .favorite-button, .add-button {
-    background: none;
-    border: none;
+    background-color: #4caf50; /* Verde más claro para los botones */
+    color: white;
+    border-radius: 8px; /* Aumenta el radio de los bordes para que sean más redondeados */
+    padding: 15px 15px; /* Aumenta el padding para hacer los botones más grandes */
+    font-size: 1em; /* Aumenta el tamaño de la fuente para hacer el texto más grande */
     cursor: pointer;
-    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
-.favorite-button {
-    color: red;
-}
-
-.favorite-button:hover {
-    color: darkred;
-}
-
-.add-button {
-    color: green;
-}
-
-.add-button:hover {
-    color: darkgreen;
-}
 
 /* Estilos para la lista de tarjetas */
 .song-list {
@@ -113,7 +101,27 @@
 .section-title {
     font-size: 2em;
     font-weight: bold;
-    color: #5fa25b;
-    text-align: center;
-    margin: 24px 0;
+    color: #ffffff;
+    text-align:left;
+    margin: 26px ;
+}
+
+.favorite-button,
+.add-button {
+  background-color: #4caf50; /* Verde más claro para los botones */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.favorite-button:hover,
+.add-button:hover {
+  background-color: #388e3c; /* Verde más oscuro al hacer hover */
+}
+
+.favorite-button:focus,
+.add-button:focus {
+  outline: none;
 }

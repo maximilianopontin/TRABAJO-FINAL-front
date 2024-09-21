@@ -8,15 +8,23 @@
     align-items:start; 
 }
 
-.favorite-item, .playlist-item {
+ .favorite-item, .playlist-item {
     cursor: pointer;
     margin-left: 15px;
-    border: 1px solid #5fa25b;
-    border-radius: 5px;
-    max-width: 400px; /* Define el ancho máximo del elemento */
-    width: 100%; /* Asegura que el elemento ocupe el 100% de su contenedor hasta el ancho máximo */
-    box-sizing: border-box; /* Incluye el padding y el border en el tamaño total */
+    border: 1px solid #5fa25b; /* Borde verde */
+    border-radius: 5px; /* Bordes redondeados */
+    max-width: 400px; /* Ancho máximo del elemento */
+    width: 100%; /* Ancho completo del contenedor */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    padding: 10px; /* Añade padding para mayor comodidad visual */
+    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
+    display: flex; /* Usa Flexbox si necesitas alinear contenido dentro del elemento */
+    align-items: center; /* Centra el contenido verticalmente si es necesario */
+    text-decoration: none; /* Quita subrayado si es un enlace */
 }
+
 .create-playlist-button {
     background-color: #5fa25b; /* Cambia este color al que prefieras */
     color: white;
@@ -24,9 +32,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 200px;
     font-size: 16px;
     width: 150px;
+
 }
 .create-playlist-button:hover {
     background-color: #45a049; /* Color al pasar el ratón por encima */

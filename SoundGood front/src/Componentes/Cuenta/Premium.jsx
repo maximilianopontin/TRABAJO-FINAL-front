@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Footer from "../Footer/Footer";
 import { Nav } from "../Nav/Nav";
 import { Link } from 'react-router-dom';
+import './EditarPerfil.css';
 
 function Premium() {
     const [mensajeGuardado, setMensajeGuardado] = useState(false);
@@ -55,14 +56,15 @@ function Premium() {
                         value={cliente.codigo}
                         onChange={handleChange}
                     />
-                    <button type="submit" className="btn">Pagar</button>
+                    <button type="submit" className="btn-guardar">Pagar</button>
                     <div className="error-message">
                         {mensajeGuardado && <p className="mensaje-guardado">Su pago fue exitoso, disfrute de Sound Good premium</p>}
                     </div>
-                    <Link to="/cuenta">
-                        <button className="btn">Regresar a cuenta</button>
+                   
+                </form> 
+                <Link to="/cuenta">
+                        <button className="btn-regresar-premium">Regresar a cuenta</button>
                     </Link>
-                </form>
             </div>
             <Footer />
         </>

@@ -4,6 +4,7 @@ import './modal.css';
 import { useState, useEffect } from "react";
 import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
 import { Link } from "react-router-dom";
+import{SongCard} from '../Inicio/Card'
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -82,11 +83,19 @@ export const Nav = () => {
                         <div className="modal-content">
                             <span className="close" onClick={() => setModalOpen(false)}>×</span>
                             <h2>Canciones encontradas:</h2>
-                            <ul>
+                            <ul className="card-nav">
                                 {searchResults.map((song, index) => (
-                                    <li key={index}>
-                                        <a href="#" onClick={() => handleSongSelec(song.url)}>{song.title}</a>
-                                    </li>
+                                      <SongCard
+                                      key={index}
+                                      url={song.url}
+                                      title={song.title}
+                                      image={song.image} // Asegúrate de que la imagen esté presente en los datos
+                                      artist={song.artist}
+                                      tags={song.tags || []} // Si tienes etiquetas, pásalas aquí
+                                      onClick={() => handleSongSelec(song.url)}
+                                      onFavorite={() => console.log('Favorito agregado')}
+                                      onAddToPlaylist={() => console.log('Agregado a la playlist')}
+                                  />
                                 ))}
                             </ul>
                         </div>

@@ -108,8 +108,7 @@ export function PagRegistro() {
         <div>
             <img src={logo} alt="Logo" className="Logo" />
             <form className="form" onSubmit={handleFormSubmit}>
-                <input type="text" name="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
-                <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange} required />
+               
                 <input type="text" name="nombre" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                 <DatePicker
                     selected={fechaNacimiento}
@@ -125,16 +124,19 @@ export function PagRegistro() {
                         preventOverflow: {
                             enabled: true,
                             boundariesElement: 'viewport'
-                        }
-                    }}
+                        } 
+                          }}
                 />
+                        <input type="text" name="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
+                <input type="password" name="password" placeholder="Contraseña" value={password} onChange={handlePasswordChange} required />
+                  
 
 
                 <div className="parrafos">
                     <p>Términos y Condiciones de SoundGood</p>
                     <p>Al registrarte en SoundGood, aceptas nuestros términos y condiciones. Por favor, asegúrate de revisarlos periódicamente, ya que pueden cambiar. Gracias por unirte a nuestra comunidad musical.</p>
                 </div>
-                <button type="submit">Registrarse</button>
+                <button type="submit">Aceptar y registrarse</button>
 
                 <div className="error-message">
                     {errorMessage ? errorMessage : ""}

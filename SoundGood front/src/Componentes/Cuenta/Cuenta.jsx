@@ -22,7 +22,7 @@ function Cuenta() {
                     <button className="btn">Acceder a Premium</button>
                 </Link>
                 <Link to="/">
-                    <button className="btn">Salir</button>
+                    <button className="btn-salir">Salir</button>
                 </Link>
             </div>
             <div>

@@ -98,15 +98,14 @@ function EditaPerfil() {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className="btn" type="submit">Guardar Cambios</button>
+                    <button className="btn-guardar" type="submit">Guardar Cambios</button>
                     <div className="error-message">
                         {mensajeGuardado && <p className="mensaje-guardado">Sus cambios han sido guardados</p>}
-
-                    </div>
+                    </div> 
+                    <Link to="/cuenta">
+                            <button className="btn-regresar">Regresar a cuenta</button>
+                        </Link>
                 </form>
-                <Link to="/cuenta">
-                    <button className="btn">Regresar a cuenta</button>
-                </Link>
             </div>
             <div>
                 <Footer />
