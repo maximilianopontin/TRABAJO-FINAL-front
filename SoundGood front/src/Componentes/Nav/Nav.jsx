@@ -4,16 +4,22 @@ import './modal.css';
 import { useState, useEffect } from "react";
 import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
 import { Link } from "react-router-dom";
-import{SongCard} from '../Inicio/Card'
+import { SongCard } from '../Inicio/Card';
+import { useFavorites } from '../Biblioteca/FavoritesContext';
+
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [isSearchModalOpen, setSearchModalOpen] = useState(false);  // Modal de búsqueda
+    const [isPlaylistModalOpen, setPlaylistModalOpen] = useState(false); // Modal de agregar a playlist
     const [songUrlReproductor, setSongUrlReproductor] = useState(null);
-    //const [playlist, setPlaylist] = useState([]);
     const [top50Tracks, setTop50Tracks] = useState([]);
     const [cancionesTracks, setCancionesTracks] = useState([]);
+    const { addFavorite, addSongToPlaylist } = useFavorites();
+    const [playlistName, setPlaylistName] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [currentSong, setCurrentSong] = useState(null);
 
     useEffect(() => {
         fetch('/CancionesTop50.json')
@@ -42,8 +48,9 @@ export const Nav = () => {
             )
         ];
         setSearchResults(filteredResults);
-        setModalOpen(true);
+        setSearchModalOpen(true); // Abrir el modal de búsqueda
     };
+
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
@@ -52,7 +59,27 @@ export const Nav = () => {
 
     const handleSongSelec = (url) => {
         setSongUrlReproductor(url);
-        setModalOpen(false);
+        setSearchModalOpen(false); // Cierra el modal de búsqueda
+        setPlaylistModalOpen(false); // Cierra el modal de playlist, si está abierto
+    };
+
+    const handleAddToPlaylist = () => {
+        if (playlistName) {
+            addSongToPlaylist(currentSong, playlistName);
+            setPlaylistName('');
+            setPlaylistModalOpen(false); // Cerrar el modal de playlist después de añadir la canción
+        } else {
+            setErrorMessage('Debes ingresar un nombre para la playlist.');
+        }
+    };
+
+    const handleFavorite = (song) => {
+        addFavorite(song); // Añade la canción a favoritos
+    };
+
+    const openPlaylistModal = (song) => {
+        setCurrentSong(song); // Establece la canción seleccionada
+        setPlaylistModalOpen(true); // Abrir el modal de agregar a playlist
     };
 
     return (
@@ -77,28 +104,46 @@ export const Nav = () => {
                     <Link to="/cuenta">Cuenta</Link>
                 </div>
             </div>
-            {isModalOpen && (
+
+            {isSearchModalOpen && (
                 <div className="modal-overlay">
                     <div className="modalNav">
                         <div className="modal-content">
-                            <span className="close" onClick={() => setModalOpen(false)}>×</span>
+                            <span className="close" onClick={() => setSearchModalOpen(false)}>×</span>
                             <h2>Canciones encontradas:</h2>
                             <ul className="card-nav">
                                 {searchResults.map((song, index) => (
-                                      <SongCard
-                                      key={index}
-                                      url={song.url}
-                                      title={song.title}
-                                      image={song.image} // Asegúrate de que la imagen esté presente en los datos
-                                      artist={song.artist}
-                                      tags={song.tags || []} // Si tienes etiquetas, pásalas aquí
-                                      onClick={() => handleSongSelec(song.url)}
-                                      onFavorite={() => console.log('Favorito agregado')}
-                                      onAddToPlaylist={() => console.log('Agregado a la playlist')}
-                                  />
+                                    <SongCard
+                                        key={index}
+                                        url={song.url}
+                                        title={song.title}
+                                        image={song.image}
+                                        artist={song.artist}
+                                        tags={song.tags || []}
+                                        onClick={() => handleSongSelec(song.url)}
+                                        onFavorite={() => handleFavorite(song)}
+                                        onAddToPlaylist={() => openPlaylistModal(song)}  // Abre el modal de playlist
+                                    />
                                 ))}
                             </ul>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {isPlaylistModalOpen && (
+                <div className="modal-overlay" onClick={() => setPlaylistModalOpen(false)}>
+                    <div className="Modal-playlist" onClick={(e) => e.stopPropagation()}>
+                        <h2>Añadir a Playlist</h2>
+                        <input
+                            type="text"
+                            placeholder="Nombre de la playlist"
+                            value={playlistName}
+                            onChange={(e) => setPlaylistName(e.target.value)}
+                        />
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <button onClick={handleAddToPlaylist}>Añadir</button>
+                        <button onClick={() => setPlaylistModalOpen(false)}>Cancelar</button>
                     </div>
                 </div>
             )}
