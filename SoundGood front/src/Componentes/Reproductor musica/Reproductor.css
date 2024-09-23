@@ -9,8 +9,6 @@
   z-index: 1000; /* Asegúrate de que esté por encima del reproductor */
 }
 
-
-
 .reproductor{
   margin-bottom: -29px;
   position: fixed;

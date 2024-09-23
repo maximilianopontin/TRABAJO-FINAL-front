@@ -6,7 +6,7 @@ import ReproductorNav from "../Reproductor musica/ReproductorBuscador";
 import { Link } from "react-router-dom";
 import { SongCard } from '../Inicio/Card';
 import { useFavorites } from '../Biblioteca/FavoritesContext';
-
+import { usePlayer } from '../Reproductor musica/PlayerContext';
 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -19,7 +19,8 @@ export const Nav = () => {
     const { addFavorite, addSongToPlaylist } = useFavorites();
     const [playlistName, setPlaylistName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [currentSong, setCurrentSong] = useState(null);
+    //const [currentSong, setCurrentSong] = useState(null);
+    const { setCurrentSong} = usePlayer();
 
     useEffect(() => {
         fetch('/CancionesTop50.json')
@@ -59,6 +60,7 @@ export const Nav = () => {
 
     const handleSongSelec = (url) => {
         setSongUrlReproductor(url);
+        setCurrentSong(url); // Establece la canción en el contexto
         setSearchModalOpen(false); // Cierra el modal de búsqueda
         setPlaylistModalOpen(false); // Cierra el modal de playlist, si está abierto
     };

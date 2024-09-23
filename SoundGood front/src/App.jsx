@@ -14,9 +14,13 @@ import {PagInicioSesion} from './Componentes/Iniciar sesion/InicioSesion'
 import Cuenta from './Componentes/Cuenta/Cuenta';
 import Premium from './Componentes/Cuenta/Premium';
 import EditaPerfil from './Componentes/Cuenta/EditarPerfin';
+import { PlayerProvider } from './Componentes/Reproductor musica/PlayerContext';
 
 function App() {
     return (
+        <PlayerProvider>
+
+        
         <Router>
             <div>
                 <Routes>
@@ -36,7 +40,7 @@ function App() {
                 </Routes>
             </div>
         </Router>
-
+</PlayerProvider>
       
     );
 }

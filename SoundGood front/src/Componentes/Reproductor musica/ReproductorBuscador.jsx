@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Canciones from "@madzadev/audio-player";
 import './Reproductor.css';
+import { usePlayer } from './PlayerContext';
 
 const colors = { // colores personalizados que se usarán para estilizar el componente de audio Canciones.
   tagsBackground: "#5fa25b",
@@ -27,6 +28,7 @@ const colors = { // colores personalizados que se usarán para estilizar el comp
 };
 
 function Reproductor({ songUrl}) {
+  const { currentSong } = usePlayer();
   const [Top50Tracks, setTop50Tracks] = useState([]); //useState se utiliza para crear una variable de estado llamada tracks y una función setTracks para actualizar esta variable. Inicialmente, tracks es un array vacío.
   const [CancionesTracks, setCancionesTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null); //estado para la lista actual, la que se va a seccionar en el buscador
@@ -47,12 +49,12 @@ function Reproductor({ songUrl}) {
 
   //Actualizar la pista actual
   useEffect(() =>{
-    if (songUrl) {
-      const selecTrack = [...Top50Tracks, ...CancionesTracks].find(track => track.url === songUrl);
+    if (currentSong) {
+      const selecTrack = [...Top50Tracks, ...CancionesTracks].find(track => track.url === currentSong);
       // ahora se busca la canción seleccionada dentro de la concatenación de ambas listas
       setCurrentTrack(selecTrack);
     }
-  }, [songUrl, Top50Tracks,CancionesTracks]);//Si songUrl está presente, busca la pista correspondiente en tracks y actualiza currentTrack con la pista seleccionada.
+  }, [currentSong, Top50Tracks,CancionesTracks]);//Si songUrl está presente, busca la pista correspondiente en tracks y actualiza currentTrack con la pista seleccionada.
 
   return (
     <div className="reproductor">

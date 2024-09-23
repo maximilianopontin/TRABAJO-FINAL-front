@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import Canciones from "@madzadev/audio-player";
 import './Reproductor.css';
+import { usePlayer } from './PlayerContext';
 
 const colors = { // colores personalizados que se usarán para estilizar el componente de audio Canciones.
   tagsBackground: "#5fa25b",
@@ -28,14 +29,25 @@ const colors = { // colores personalizados que se usarán para estilizar el comp
 };
 
 function Reproductor() {
+  const { currentSong } = usePlayer(); // Obtén la canción actual desde el contexto
   const [tracks, setTracks] = useState([]); //useState se utiliza para crear una variable de estado llamada tracks y una función setTracks para actualizar esta variable. Inicialmente, tracks es un array vacío.
-
+ 
   useEffect(() => {
     fetch('/Canciones.json')
       .then(response => response.json()) //convierte la respuesta en un objeto JavaScript.
       .then(data => setTracks(data)) //actualiza la variable de estado tracks con los datos obtenidos.
       .catch(error => console.error('Error loading the tracks:', error));
   }, []);
+  
+  useEffect(() => {
+    if (currentSong) {
+      const updatedTracks = tracks.map(track => ({
+        ...track,
+        isPlaying: track.url === currentSong, // Marcar la canción actual como "isPlaying"
+      }));
+      setTracks(updatedTracks);
+    }
+  }, [currentSong, tracks]);
 
 
   return (
