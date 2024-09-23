@@ -1,4 +1,13 @@
 /*estilo contenedor */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  z-index: 1000; /* Asegúrate de que esté por encima del reproductor */
+}
 
 .reproductor{
   margin-bottom: -29px;
