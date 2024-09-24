@@ -18,7 +18,7 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
-    const { addFavorite, addSongToPlaylist, playlists } = useFavorites(); // Asegúrate de que playlists esté incluido
+    const { addFavorite, addSongToPlaylist, playlists } = useFavorites(); 
     const [isModalOpen, setIsModalOpen] = useState(false);
     //const [currentSong, setCurrentSong] = useState(null);
     const [playlistName, setPlaylistName] = useState('');
