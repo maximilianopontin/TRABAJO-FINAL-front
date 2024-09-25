@@ -61,13 +61,13 @@ export function Biblioteca() {
                                 </div>
                             ))}
                         </div>
-                    )}
+                     )}
                 </div>
             ))}
             {/*Se muestra un modal para crear una nueva lista de reproducción.*/}
             {showModal && (
-                <div className="modal">
-                    <div className="modal-content">
+                <div className="modal-playlist">
+                    <div className="modal-content-playlist">
                         <h3>Crear Nueva Playlist</h3>
                         <input
                             type="text"
