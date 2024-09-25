@@ -9,6 +9,7 @@ import Reproductor from '../Reproductor musica/ReproductorBuscador';
 import Footer from '../Footer/Footer';
 import { SongCard } from '../Inicio/Card';
 
+
 export function Biblioteca() {
     const { favorites, playlists, createPlaylist } = useFavorites(); // Usa el contexto 
     const [selectedSong, setSelectedSong] = useState(null); //canción seleccionada actualmente.
@@ -28,6 +29,7 @@ export function Biblioteca() {
     // Establece la canción seleccionada cuando se hace clic en una canción.
     const handleSongClick = (song) => {
         setSelectedSong(song); // Guarda la canción seleccionada
+        console.log('Canción seleccionada:', song);
     };
 
     return (
