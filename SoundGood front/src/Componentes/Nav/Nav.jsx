@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { SongCard } from '../Inicio/Card';
 import { useFavorites } from '../Biblioteca/FavoritesContext';
 import { usePlayer } from '../Reproductor musica/PlayerContext';
-
+ 
 export const Nav = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
