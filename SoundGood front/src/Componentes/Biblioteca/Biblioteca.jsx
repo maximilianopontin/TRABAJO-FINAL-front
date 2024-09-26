@@ -94,7 +94,7 @@ export function Biblioteca() {
                             image={selectedSong.image}
                             artist={selectedSong.artist}
                         />
-                        <div className="reproductor-container">
+                        <div>
                             <Reproductor /> {/* No es necesario pasar songUrl aquí */}
                         </div>
                     </div>
