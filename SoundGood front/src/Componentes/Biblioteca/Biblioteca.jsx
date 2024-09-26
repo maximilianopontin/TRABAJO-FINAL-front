@@ -17,20 +17,24 @@ export function Biblioteca() {
 
     const { setCurrentSong } = usePlayer(); // Utiliza el contexto del reproductor
 
-    // Crea una nueva lista de reproducción con el nombre introducido y resetea el estado correspondiente.
     const handleCreatePlaylist = () => {
         if (playlistName.trim()) {
-            createPlaylist(playlistName.trim());
+            createPlaylist(playlistName.trim(), []); // Inicializa una lista vacía
             setPlaylistName('');
             setShowModal(false);
         }
     };
-
-    // Establece la canción seleccionada cuando se hace clic en una canción.
+    
     const handleSongClick = (song) => {
-        setSelectedSong(song); // Guarda la canción seleccionada localmente
-        setCurrentSong(song.url); // Actualiza la canción en el reproductor global
+        if (song && song.url) {
+            setSelectedSong(song); // Guarda la canción seleccionada localmente
+            setCurrentSong(song.url); // Actualiza la canción en el reproductor global
+            console.log("Canción seleccionada:", song);
+        } else {
+            console.error('La canción seleccionada no tiene una URL válida', song);
+        }
     };
+    
 
     return (
         <>
@@ -65,7 +69,6 @@ export function Biblioteca() {
                     </div>
                 ))}
 
-                {/* Se muestra un modal para crear una nueva lista de reproducción. */}
                 {showModal && (
                     <div className="modal-playlist">
                         <div className="modal-content-playlist">
@@ -82,7 +85,6 @@ export function Biblioteca() {
                     </div>
                 )}
 
-                {/* Muestra la tarjeta de la canción seleccionada y el reproductor */}
                 {selectedSong && (
                     <div className="card-playlist">
                         <SongCard
@@ -93,7 +95,7 @@ export function Biblioteca() {
                             artist={selectedSong.artist}
                         />
                         <div className="reproductor-container">
-                            <Reproductor songUrl={selectedSong.url} />
+                            <Reproductor /> {/* No es necesario pasar songUrl aquí */}
                         </div>
                     </div>
                 )}

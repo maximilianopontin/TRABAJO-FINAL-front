@@ -67,28 +67,47 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
         setSelectedPlaylist('');
         setErrorMessage('');
     };
-
     const handleAddToPlaylist = () => {
         if (selectedPlaylist) {
-            // Verifica si la playlist seleccionada ya tiene la canción actual
-            //Usamos el método some para verificar si alguna de las canciones en la playlist seleccionada 
-            //tiene el mismo url que la canción actual (currentSong).
             const playlistSongs = playlists[selectedPlaylist];
             const isSongInPlaylist = playlistSongs.some(song => song.url === currentSong);
 
             if (isSongInPlaylist) {
                 setErrorMessage('Esta canción ya está en esa playlist.');
             } else {
-                // Si no está en la playlist, la añade
-                addSongToPlaylist(currentSong, selectedPlaylist);
-                console.log(`Canción añadida: ${currentSong}`);
-                console.log('Canciones en la playlist:', playlists[selectedPlaylist]);
-                closeModal();
+                const currentSongData = songsTop50.find(song => song.url === currentSong) || songsTendencias.find(song => song.url === currentSong);
+                if (currentSongData) {
+                    addSongToPlaylist(currentSongData, selectedPlaylist); // Agrega el objeto completo de la canción
+                    console.log(`Canción añadida: ${currentSong}`);
+                    closeModal();
+                }
             }
         } else {
             setErrorMessage('Por favor selecciona una playlist.');
         }
     };
+
+    /*  const handleAddToPlaylist = () => {
+          if (selectedPlaylist) {
+              // Verifica si la playlist seleccionada ya tiene la canción actual
+              //Usamos el método some para verificar si alguna de las canciones en la playlist seleccionada 
+              //tiene el mismo url que la canción actual (currentSong).
+              const playlistSongs = playlists[selectedPlaylist];
+              const isSongInPlaylist = playlistSongs.some(song => song.url === currentSong);
+  
+              if (isSongInPlaylist) {
+                  setErrorMessage('Esta canción ya está en esa playlist.');
+              } else {
+                  // Si no está en la playlist, la añade
+                  addSongToPlaylist(currentSong, selectedPlaylist);
+                  console.log(`Canción añadida: ${currentSong}`);
+                  console.log('Canciones en la playlist:', playlists[selectedPlaylist]);
+                  closeModal();
+              }
+          } else {
+              setErrorMessage('Por favor selecciona una playlist.');
+          }
+      };*/
 
 
     const settings = {
@@ -152,13 +171,15 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                             title={song.title}
                             tags={song.tags}
                             url={song.url}
+                            artist={song.artist}
                             onClick={() => {
                                 setSelectedSongUrl(song.url);
-                                setCurrentSong(song.url); // Establece la canción en el contexto del reproductor
+                                setCurrentSong(song.url);
                             }}
                             onFavorite={() => addFavorite(song)}
-                            onAddToPlaylist={() => openModal(song)}
+                            onAddToPlaylist={() => openModal(song)} // Asegúrate de que el modal se abre con la canción correcta
                         />
+
                     ))}
                 </Slider>
                 {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
@@ -170,33 +191,31 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                 />
 
                 {/* Modal para agregar a playlist */}
-                {isModalOpen && (
-                    <div className="modal-overlay" onClick={closeModal}>
-                        <div className="Modal-playlist" onClick={(e) => e.stopPropagation()}>
-                            <h2>Añadir a Playlist</h2>
-
-                            {/* Dropdown para seleccionar la playlist- el value es la playlist seleccionada 
-                            por el usuario (selectedPlaylist), y se actualiza con el método onChange. */}
-                            <select
-                                className="modal-select-playlist"
-                                value={selectedPlaylist}
-                                onChange={(e) => setSelectedPlaylist(e.target.value)}
-                            >
-                                <option value="">Selecciona una playlist</option>
-                                {Object.keys(playlists).map((name, index) => (
-                                    <option key={index} value={name}>{name}</option>
-                                ))}
-                            </select>
-                            {/*Si el usuario intenta añadir una canción sin seleccionar una playlist, aparecerá un mensaje de error.*/}
-                            {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-                            <div className="modal-buttons">
-                                <button onClick={handleAddToPlaylist}>Añadir</button>
-                                <button onClick={closeModal}>Cancelar</button>
-                            </div>
+                <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    className="modal-overlay"
+                >
+                    <div className="Modal-playlist">
+                        <h2>Añadir a Playlist</h2>
+                        <select
+                            className="modal-select-playlist"
+                            value={selectedPlaylist}
+                            onChange={(e) => setSelectedPlaylist(e.target.value)}
+                        >
+                            <option value="">Selecciona una playlist</option>
+                            {Object.keys(playlists).map((name, index) => (
+                                <option key={index} value={name}>{name}</option>
+                            ))}
+                        </select>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <div className="modal-buttons">
+                            <button onClick={handleAddToPlaylist}>Añadir</button>
+                            <button onClick={closeModal}>Cancelar</button>
                         </div>
                     </div>
-                )}
+                </Modal>
+
             </div>
         </>
     );

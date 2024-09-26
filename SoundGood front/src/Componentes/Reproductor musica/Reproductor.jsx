@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import Canciones from "@madzadev/audio-player";
 import './Reproductor.css';
 import { usePlayer } from './PlayerContext';
@@ -30,42 +29,40 @@ const colors = { // colores personalizados que se usarán para estilizar el comp
 
 function Reproductor() {
   const { currentSong } = usePlayer(); // Obtén la canción actual desde el contexto
-  const [tracks, setTracks] = useState([]); //useState se utiliza para crear una variable de estado llamada tracks y una función setTracks para actualizar esta variable. Inicialmente, tracks es un array vacío.
- 
+  const [tracks, setTracks] = useState([]);
+
   useEffect(() => {
     fetch('/Canciones.json')
-      .then(response => response.json()) //convierte la respuesta en un objeto JavaScript.
-      .then(data => setTracks(data)) //actualiza la variable de estado tracks con los datos obtenidos.
+      .then(response => response.json())
+      .then(data => setTracks(data))
       .catch(error => console.error('Error loading the tracks:', error));
   }, []);
-  
+
   useEffect(() => {
-    if (currentSong) {
+    if (currentSong && tracks.length > 0) {
       const updatedTracks = tracks.map(track => ({
         ...track,
         isPlaying: track.url === currentSong, // Marcar la canción actual como "isPlaying"
       }));
       setTracks(updatedTracks);
     }
-  }, [currentSong, tracks]);
-
+  }, [currentSong]);
 
   return (
-    <div  className="reproductor">
-      {tracks.length > 0 && ( //El componente Canciones se renderiza solo si (tracks.length > 0).
+    <div className="reproductor">
+      {tracks.length > 0 && (
         <Canciones
-
           trackList={tracks}
           includeTags={false}
           includeSearch={false}
           showPlaylist={false}
           sortTracks={true}
           autoPlayNextTrack={true}
-          customColorScheme={colors} />
-
+          customColorScheme={colors}
+        />
       )}
     </div>
-  )
-};
+  );
+}
 
 export default Reproductor;
