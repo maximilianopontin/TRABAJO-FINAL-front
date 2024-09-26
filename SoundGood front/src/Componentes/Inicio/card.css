@@ -118,7 +118,7 @@
 }
 .favorite-button:hover,
 .add-button:hover {
-  background-color: #388e3c; /* Verde más oscuro al hacer hover */
+  background-color: #215c24; /* Verde más oscuro al hacer hover */
 }
 
 .favorite-button:focus,

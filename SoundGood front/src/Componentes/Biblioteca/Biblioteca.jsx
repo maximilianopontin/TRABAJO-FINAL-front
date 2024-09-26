@@ -64,10 +64,11 @@ export function Biblioteca() {
                         )}
                     </div>
                 ))}
-                {/* Modal para crear una nueva lista de reproducción */}
+
+                {/* Se muestra un modal para crear una nueva lista de reproducción. */}
                 {showModal && (
-                    <div className="modal">
-                        <div className="modal-content">
+                    <div className="modal-playlist">
+                        <div className="modal-content-playlist">
                             <h3>Crear Nueva Playlist</h3>
                             <input
                                 type="text"
@@ -80,6 +81,7 @@ export function Biblioteca() {
                         </div>
                     </div>
                 )}
+
                 {/* Muestra la tarjeta de la canción seleccionada y el reproductor */}
                 {selectedSong && (
                     <div className="card-playlist">

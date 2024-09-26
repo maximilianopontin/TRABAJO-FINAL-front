@@ -16,12 +16,14 @@ export const Nav = () => {
     const [songUrlReproductor, setSongUrlReproductor] = useState(null);
     const [top50Tracks, setTop50Tracks] = useState([]);
     const [cancionesTracks, setCancionesTracks] = useState([]);
-    const { addFavorite, addSongToPlaylist } = useFavorites();
+    const { addFavorite, addSongToPlaylist, playlists } = useFavorites();
     const [playlistName, setPlaylistName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     //const [currentSong, setCurrentSong] = useState(null);
     const { setCurrentSong} = usePlayer();
-
+    const [selectedPlaylist, setSelectedPlaylist] = useState
+    (''); // Playlist seleccionada
+  
     useEffect(() => {
         fetch('/CancionesTop50.json')
             .then(response => response.json())
@@ -65,13 +67,25 @@ export const Nav = () => {
         setPlaylistModalOpen(false); // Cierra el modal de playlist, si está abierto
     };
 
-    const handleAddToPlaylist = () => {
-        if (playlistName) {
-            addSongToPlaylist(currentSong, playlistName);
-            setPlaylistName('');
-            setPlaylistModalOpen(false); // Cerrar el modal de playlist después de añadir la canción
+   const handleAddToPlaylist = () => {
+        if (selectedPlaylist) {
+            // Verifica si la playlist seleccionada ya tiene la canción actual
+            //Usamos el método some para verificar si alguna de las canciones en la playlist seleccionada 
+            //tiene el mismo url que la canción actual (currentSong).
+            const playlistSongs = playlists[selectedPlaylist];
+            const isSongInPlaylist = playlistSongs.some(song => song.url === currentSong);
+
+            if (isSongInPlaylist) {
+                setErrorMessage('Esta canción ya está en esa playlist.');
+            } else {
+                // Si no está en la playlist, la añade
+                addSongToPlaylist(currentSong, selectedPlaylist);
+                console.log(`Canción añadida: ${currentSong}`);
+                console.log('Canciones en la playlist:', playlists[selectedPlaylist]);
+                closeModal();
+            }
         } else {
-            setErrorMessage('Debes ingresar un nombre para la playlist.');
+            setErrorMessage('Por favor selecciona una playlist.');
         }
     };
 
@@ -134,15 +148,22 @@ export const Nav = () => {
             )}
 
             {isPlaylistModalOpen && (
-                <div className="modal-overlay" onClick={() => setPlaylistModalOpen(false)}>
-                    <div className="Modal-playlist" onClick={(e) => e.stopPropagation()}>
-                        <h2>Añadir a Playlist</h2>
-                        <input
-                            type="text"
-                            placeholder="Nombre de la playlist"
-                            value={playlistName}
-                            onChange={(e) => setPlaylistName(e.target.value)}
-                        />
+                <div className="modal-playlist" onClick={() => setPlaylistModalOpen(false)}>
+                    <div className="modal-content-playlist" onClick={(e) => e.stopPropagation()}>
+                        <h3>Añadir a Playlist</h3>
+                        {/* Dropdown para seleccionar la playlist- el value es la playlist seleccionada 
+                            por el usuario (selectedPlaylist), y se actualiza con el método onChange. */}
+                            <select
+                                className="modal-select-playlist"
+                                value={selectedPlaylist}
+                                onChange={(e) => setSelectedPlaylist(e.target.value)}
+                            >
+                                <option value="">Selecciona una playlist</option>
+                                {Object.keys(playlists).map((name, index) => (
+                                    <option key={index} value={name}>{name}</option>
+                                ))}
+                            </select>
+                            {/*Si el usuario intenta añadir una canción sin seleccionar una playlist, aparecerá un mensaje de error.*/}
                         {errorMessage && <p className="error-message">{errorMessage}</p>}
                         <button onClick={handleAddToPlaylist}>Añadir</button>
                         <button onClick={() => setPlaylistModalOpen(false)}>Cancelar</button>
