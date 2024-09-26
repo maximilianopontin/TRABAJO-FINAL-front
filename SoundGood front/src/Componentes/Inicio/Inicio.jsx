@@ -1,4 +1,3 @@
-//muestra las canciones más populares y las tendencias actuales, permitiendo añadir canciones a favoritos y listas de reproducción.
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { SongCard } from "./Card";
@@ -18,12 +17,12 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
     const [songsTop50, setSongsTop50] = useState([]);
     const [songsTendencias, setSongsTendencias] = useState([]);
     const [selectedSongUrl, setSelectedSongUrl] = useState(null);
-    const { addFavorite, addSongToPlaylist, playlists } = useFavorites(); // Asegúrate de que playlists esté incluido
+    const { addFavorite, addSongToPlaylist, playlists } = useFavorites();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    //const [currentSong, setCurrentSong] = useState(null);
     const [playlistName, setPlaylistName] = useState('');
+    const [selectedPlaylist, setSelectedPlaylist] = useState(''); // Playlist seleccionada
     const [errorMessage, setErrorMessage] = useState('');
-    const { setCurrentSong } = usePlayer();
+    const { currentSong, setCurrentSong } = usePlayer();
 
     useEffect(() => {
         fetch('/CancionesTop50.json')
@@ -58,35 +57,67 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
     }, []);
 
     const openModal = (song) => {
-        setCurrentSong(song.url);// Establece la canción en el contexto
+        setCurrentSong(song.url); // Establece la canción en el contexto
         setIsModalOpen(true);
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
         setPlaylistName('');
+        setSelectedPlaylist('');
         setErrorMessage('');
     };
-
     const handleAddToPlaylist = () => {
-        if (playlistName) {
-            if (playlists[playlistName] && playlists[playlistName].some(song => song.url === currentSong.url)) {
+        if (selectedPlaylist) {
+            const playlistSongs = playlists[selectedPlaylist];
+            const isSongInPlaylist = playlistSongs.some(song => song.url === currentSong);
+
+            if (isSongInPlaylist) {
                 setErrorMessage('Esta canción ya está en esa playlist.');
             } else {
-                addSongToPlaylist(currentSong, playlistName);
-                closeModal();
+                const currentSongData = songsTop50.find(song => song.url === currentSong) || songsTendencias.find(song => song.url === currentSong);
+                if (currentSongData) {
+                    addSongToPlaylist(currentSongData, selectedPlaylist); // Agrega el objeto completo de la canción
+                    console.log(`Canción añadida: ${currentSong}`);
+                    closeModal();
+                }
             }
+        } else {
+            setErrorMessage('Por favor selecciona una playlist.');
         }
     };
+
+    /*  const handleAddToPlaylist = () => {
+          if (selectedPlaylist) {
+              // Verifica si la playlist seleccionada ya tiene la canción actual
+              //Usamos el método some para verificar si alguna de las canciones en la playlist seleccionada 
+              //tiene el mismo url que la canción actual (currentSong).
+              const playlistSongs = playlists[selectedPlaylist];
+              const isSongInPlaylist = playlistSongs.some(song => song.url === currentSong);
+  
+              if (isSongInPlaylist) {
+                  setErrorMessage('Esta canción ya está en esa playlist.');
+              } else {
+                  // Si no está en la playlist, la añade
+                  addSongToPlaylist(currentSong, selectedPlaylist);
+                  console.log(`Canción añadida: ${currentSong}`);
+                  console.log('Canciones en la playlist:', playlists[selectedPlaylist]);
+                  closeModal();
+              }
+          } else {
+              setErrorMessage('Por favor selecciona una playlist.');
+          }
+      };*/
+
 
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4, // Muestra 3 tarjetas completas en el centro
+        slidesToShow: 4, // Muestra 4 tarjetas
         slidesToScroll: 1, // Cambia de una tarjeta a la vez
-        centerMode: true, // Activa el modo de centrado para mostrar media tarjeta en los bordes
-        centerPadding: '110px', // Espacio adicional a los lados para mostrar media tarjeta
+        centerMode: true, // Activa el modo de centrado
+        centerPadding: '110px', // Espacio adicional a los lados
         responsive: [
             {
                 breakpoint: 1024,
@@ -123,8 +154,8 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                             tags={song.tags}
                             url={song.url}
                             onClick={() => {
-                                setSelectedSongUrl(song.url)
-                                setCurrentSong(song.url) // Establece la canción en el contexto del reproductor
+                                setSelectedSongUrl(song.url);
+                                setCurrentSong(song.url); // Establece la canción en el contexto del reproductor
                             }}
                             onFavorite={() => addFavorite(song)}
                             onAddToPlaylist={() => openModal(song)}
@@ -140,13 +171,15 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                             title={song.title}
                             tags={song.tags}
                             url={song.url}
+                            artist={song.artist}
                             onClick={() => {
-                                setSelectedSongUrl(song.url)
-                                setCurrentSong(song.url) // Establece la canción en el contexto del reproductor
+                                setSelectedSongUrl(song.url);
+                                setCurrentSong(song.url);
                             }}
                             onFavorite={() => addFavorite(song)}
-                            onAddToPlaylist={() => openModal(song)}
+                            onAddToPlaylist={() => openModal(song)} // Asegúrate de que el modal se abre con la canción correcta
                         />
+
                     ))}
                 </Slider>
                 {selectedSongUrl && <Reproductor songUrl={selectedSongUrl} />}
@@ -156,26 +189,34 @@ export function Inicio({ redirectToAcercaDe, redirectToPlanPremium, redirectToVe
                     redirectToVersionGratuita={redirectToVersionGratuita}
                     redirectToAyudas={redirectToAyudas}
                 />
-                {isModalOpen && (
-                    <div className="modal-overlay" onClick={closeModal}>
-                        <div className="Modal-playlist" onClick={(e) => e.stopPropagation()}>
-                            <h2>Añadir a Playlist</h2>
-                            <input className="modal-input-playlist"
-                                type="text"
-                                placeholder="Nombre de la playlist"
-                                value={playlistName}
-                                onChange={(e) => setPlaylistName(e.target.value)}
-                            />
-                            {errorMessage && <p className="error-message">{errorMessage}</p>}
-                            <div className="modal-buttons">
-                                <button onClick={handleAddToPlaylist}>Añadir</button>
-                                <button onClick={closeModal}>Cancelar</button>
-                            </div>
+
+                {/* Modal para agregar a playlist */}
+                <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    className="modal-overlay"
+                >
+                    <div className="Modal-playlist">
+                        <h2>Añadir a Playlist</h2>
+                        <select
+                            className="modal-select-playlist"
+                            value={selectedPlaylist}
+                            onChange={(e) => setSelectedPlaylist(e.target.value)}
+                        >
+                            <option value="">Selecciona una playlist</option>
+                            {Object.keys(playlists).map((name, index) => (
+                                <option key={index} value={name}>{name}</option>
+                            ))}
+                        </select>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <div className="modal-buttons">
+                            <button onClick={handleAddToPlaylist}>Añadir</button>
+                            <button onClick={closeModal}>Cancelar</button>
                         </div>
                     </div>
-                )}
-            </div>
+                </Modal>
 
+            </div>
         </>
     );
 }
